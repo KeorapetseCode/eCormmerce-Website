@@ -1,12 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import './Header.css'
+import './Header.css';
 
-//import SearchIcon from '@material-ui/core/Icon/';
+import SearchIcon from '@material-ui/icons/Search';
 
-
-import main_logo from './img/logo192.png'
-
+import main_logo from './img/logo192.png';
 
 
 function Header() {
