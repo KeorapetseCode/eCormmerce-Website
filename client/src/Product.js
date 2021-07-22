@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "./Product.css";
+import "./styles/Product.css";
 //import one_prod from './img/GodBlessMyHustle/Brown Cap.jpg'
 
 
