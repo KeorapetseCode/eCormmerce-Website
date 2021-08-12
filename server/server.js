@@ -12,8 +12,10 @@ app.get('/api/customers', (req, res) => {
 		{id: 1, firstname: 'John', lastname: "Dan"},
 		{id: 2, firstname: 'Steve', lastname: "Fllflf"}
 	];
+	
 	res.json(customers);
 });
+
 
 const port = 5000;
 
