@@ -8,15 +8,11 @@ app.get('/', (req, res) =>{
 
 
 app.get('/api/customers', (req, res) => {
-	const customers = [
-		{id: 1, firstname: 'John', lastname: "Dan"},
-		{id: 2, firstname: 'Steve', lastname: "Fllflf"}
-	];
-	
-	res.json(customers);
+
+	res.json({msg : "message from server"});
 });
 
 
-const port = 5000;
+const port = 5001;
 
 app.listen(port);
