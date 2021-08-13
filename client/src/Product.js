@@ -13,11 +13,12 @@ function Product({prod_title, prod_image, prod_price, prod_quantity}) {
 					<small>{prod_price}</small>
 				</p>
 				<p className="product_quantity">{prod_quantity}</p>
-
+				{/*
 				<img className="prod_image"
-					src={prod_image} alt={"item goes here"}
+					src={prod_image}
+					alt={"item goes here"}
 				/>
-
+				*/}
 				<button>Place Order</button>
 					</div>
 		</div>
