@@ -1,15 +1,16 @@
 const express = require('express');
 
 const app = express();
-/*
+
+
 app.get('/', (req, res) =>{
 	res.send("Index Page");
 });
-*/
 
-app.get('/', (req, res) => {
 
-	res.json({msg : "message from server"});
+app.get('/api', (req, res) => {
+
+	res.send("Text from server");
 });
 
 
