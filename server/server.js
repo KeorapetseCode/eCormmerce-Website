@@ -13,7 +13,7 @@ function checkFolderExist(dir_path){
 
 	try {
 		if (fs.existsSync(dir_path)) {
-    		console.log("Directory exists.");
+    		//console.log("Directory exists.");
 			return true;
   		}
 	  	else {
@@ -27,7 +27,7 @@ function checkFolderExist(dir_path){
 	}
 }
 
-function checkFolderEmpty(dir_path){
+function checkFolderIfEmpty(dir_path){
 
 	let dirs = -1;
 
@@ -45,19 +45,19 @@ function checkFolderEmpty(dir_path){
 app.get('/api', (req, res) => {
 
 	let dir_path = "./items";
-	let dirs;
+	let brand_dirs;
+//	let brand_dir_arr = new Array();
+	let i = 0;
 
 	if (checkFolderExist(dir_path) == true){
-		dirs = checkFolderEmpty(dir_path);
-		console.log(dirs);
-		
+		brand_dirs = checkFolderIfEmpty(dir_path);
+		res.send(dir_path + "/" + brand_dirs[1]);
+		console.log(dir_path + "/" + brand_dirs[1]);
 	}
 	else if (checkFolder(dir_path) == false)
-		res.send("Item folder found");
+		res.send("Item folder found");	
 	
-	
-	
-		res.send("Text from server");
+		//res.send("Text from server");
 });
 
 
