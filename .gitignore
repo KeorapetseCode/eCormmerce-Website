@@ -3,6 +3,7 @@
 # dependencies
 /server/items
 /node_modules
+/client/src/items
 /client/node_modules
 /client/new-react
 /.vscode
