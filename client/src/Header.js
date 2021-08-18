@@ -4,7 +4,7 @@ import './styles/Header.css';
 
 import SearchIcon from '@material-ui/icons/Search';
 
-import main_logo from './img/logo192.png';
+import main_logo from './items/logo192.png';
 
 function Header() {
 	return(

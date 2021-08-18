@@ -43,21 +43,23 @@ function checkFolderIfEmpty(dir_path){
 }
 
 
+
 app.get('/api', (req, res) => {
 
 	let dir_path = "./items";
 	let brand_dirs;
 	let i = 0;
-	/*
+/*
 	if (checkFolderExist(dir_path) == true){
-		//brand_dirs = checkFolderIfEmpty(dir_path);
-		//res.send(dir_path + "/" + brand_dirs[1]);
-		//console.log(dir_path + "/" + brand_dirs[1]);
-		res.send("Ordddd");
+		brand_dirs = checkFolderIfEmpty(dir_path);
+		console.log(dir_path + "/" + brand_dirs[1]);
+		res.send(dir_path + "/" + brand_dirs[1]);
+		//
+		//res.send("Ordddd");
 	}
 	else if (checkFolder(dir_path) == false)
 		res.send("Item folder found");	
-	*/
+*/	
 		res.send("Text from server");
 });
 
