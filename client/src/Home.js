@@ -1,76 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/Home.css';
-import packageJson from '../package.json';
+//import packageJson from '../package.json';
 //import home_logo from '/img/logo512.png';
 //import Product from './Product.js';
-//import { json } from 'express';
 
+function Home() {
+	var [loadStatus, setLoadingStatus] = useState(false);
+	var [data, setData] = useState('');
 
-class Home extends React.Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			loadStatus: false,
-			data: ""
-		};
-	}
+	useEffect(() => {
+		var fetchBack = async () =>{
+			const resp = await fetch("/api");
+			const info = await resp.text();
+			const new_data = info;
+			console.log(new_data);
+			setLoadingStatus(true);
+			setData(new_data);
+		}
+		fetchBack();
+	}, []);
 
-	async componentDidMount() {
-		const url_json = packageJson.proxy + "/api";
-		console.log(url_json);
-		const resp = await fetch(url_json);
-		const new_data = await resp.text();
-
-		this.setState({data: new_data, loadStatus: true});
-	}
-
-
-	render() {
-		return (
-			<div>
-				{!this.state.loadStatus ?<div>loading...!</div>
-				 :(
-					 <div>
-						 <div>It loaded</div>
-						 <div>{this.state.data}</div>
-						{/*
-						<img className="prod_image"
-						src={this.state.images}
-						alt={"item goes here"}
-						/>
-						*/}
-					 </div>
-				 )
-				}
-			</div>
-		)
-	}
-
-/*
-	render(){
-		return(
-		<div className="home">
-			<div className="home_container">
-				<div className="home_row">
-					<Product />
-					<Product />
-				</div>
-				<div className="home_row">
-					<Product />
-					<Product />
-					<Product />
-				</div>
-				<div>
-					<p>{ this.state.msgFromApi } </p>
-				</div>
-				<div className="home_row">
-					<Product />
-					<Product />
-				</div>
-			</div>
+	return (
+		<div>
+			{!loadStatus ?<div>loading...!</div>
+				:(
+					<div>
+						<div>It loaded</div>
+						<div>{data}</div>
+					</div>
+				)
+			}
 		</div>
-		);
-	}*/
+	)
 }
 
-	export default Home;
+export default Home

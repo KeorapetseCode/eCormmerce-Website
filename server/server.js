@@ -1,9 +1,10 @@
 const { dir } = require('console');
 const express = require('express');
 const fs = require("fs");
+//const cors = require('cors');
 
 const app = express();
-
+//app.use(cors());
 
 app.get('/', (req, res) => {
 	res.send("Your on index");
@@ -46,18 +47,18 @@ app.get('/api', (req, res) => {
 
 	let dir_path = "./items";
 	let brand_dirs;
-//	let brand_dir_arr = new Array();
 	let i = 0;
-
+	/*
 	if (checkFolderExist(dir_path) == true){
-		brand_dirs = checkFolderIfEmpty(dir_path);
-		res.send(dir_path + "/" + brand_dirs[1]);
-		console.log(dir_path + "/" + brand_dirs[1]);
+		//brand_dirs = checkFolderIfEmpty(dir_path);
+		//res.send(dir_path + "/" + brand_dirs[1]);
+		//console.log(dir_path + "/" + brand_dirs[1]);
+		res.send("Ordddd");
 	}
 	else if (checkFolder(dir_path) == false)
 		res.send("Item folder found");	
-	
-		//res.send("Text from server");
+	*/
+		res.send("Text from server");
 });
 
 
