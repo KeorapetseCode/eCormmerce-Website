@@ -5,18 +5,18 @@ const fs = require("fs");
 	function checkFolderExist(dir_path){
 
 		try {
-			if (fs.existsSync(dir_path)) {
+			if (fs.existsSync(dir_path) === true) {
 				//console.log("Directory exists.");
 				return true;
 			}
-			else {
-				console.log("Directory does not exist.");
+			else if (fs.existsSync(dir_path) === false){
+				console.log("Directory does not exist ## " + dir_path + "\n");
 				return false;
 			}
 		}
 		catch(e) {
 			console.log("An error occurred while looking for item folder.");
-			return false;
+			//return false;
 		}
 	}
 
@@ -25,6 +25,7 @@ const fs = require("fs");
 		let dirs = -1;
 		try{
 			dirs = fs.readdirSync(dir_path);
+			console.log("Folder Is " + dir_path);
 		}
 		catch{
 			console.log("Cannot read how many contents in item folder");
@@ -33,27 +34,28 @@ const fs = require("fs");
 		return dirs;
 	}
 //}
-	function getImageFolders(){
+	function ImportImages(){
 		let dir_path = "./items";
-		let dirs = new Array();
+		let dirs = [];
 		let ret = [];
 		let check;
 
-		if (checkFolderExist(dir_path) == true){
+		if (checkFolderExist(dir_path) === true){
 			dirs = checkFolderIfEmpty(dir_path);
 
 			for (let i = 0; i < dirs.length; i++){
 				check = fs.statSync(dir_path + "/" + dirs[i]);
-				if(check.isDirectory() == true){
+				if(check.isDirectory() === true){
 					ret = ret.concat(dirs[i]);
 				}
 			}
 		}
-		else if (checkFolder(dir_path) == false)
+		else if (checkFolderIfEmpty(dir_path) === false)
 			dirs = "Item folder found";
 		//console.log(ret);
 		return ret;
 	}
-	getImageFolders();
+	//getImageFolders();
+	
 
-//export default ImportImages;
+export default ImportImages;
