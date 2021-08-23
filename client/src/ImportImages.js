@@ -2,8 +2,6 @@
 const fs = require("fs");
 //const { dir } = require('console');
 
-//function ImportImages(){
-
 	function checkFolderExist(dir_path){
 
 		try {
@@ -25,7 +23,6 @@ const fs = require("fs");
 	function checkFolderIfEmpty(dir_path){
 
 		let dirs = -1;
-
 		try{
 			dirs = fs.readdirSync(dir_path);
 		}
@@ -36,18 +33,27 @@ const fs = require("fs");
 		return dirs;
 	}
 //}
-	let dir_path = "./items";
-	let brand_dirs;
-	let i = 0;
+	function getImageFolders(){
+		let dir_path = "./items";
+		let dirs = new Array();
+		let ret = [];
+		let check;
 
-	if (checkFolderExist(dir_path) == true){
-		brand_dirs = checkFolderIfEmpty(dir_path);
-		console.log(dir_path + "/" + brand_dirs[1]);
-		//res.send(dir_path + "/" + brand_dirs[1]);
-		//
-		//res.send("Ordddd");
+		if (checkFolderExist(dir_path) == true){
+			dirs = checkFolderIfEmpty(dir_path);
+
+			for (let i = 0; i < dirs.length; i++){
+				check = fs.statSync(dir_path + "/" + dirs[i]);
+				if(check.isDirectory() == true){
+					ret = ret.concat(dirs[i]);
+				}
+			}
+		}
+		else if (checkFolder(dir_path) == false)
+			dirs = "Item folder found";
+		//console.log(ret);
+		return ret;
 	}
-	else if (checkFolder(dir_path) == false)
-		console.log("Item folder found");
+	getImageFolders();
 
-export default ImportImages;
+//export default ImportImages;
