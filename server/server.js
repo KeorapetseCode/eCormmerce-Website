@@ -1,10 +1,8 @@
 const { dir } = require('console');
 const express = require('express');
 const fs = require("fs");
-//const cors = require('cors');
 
 const app = express();
-//app.use(cors());
 
 app.get('/', (req, res) => {
 	res.send("Your on index");
@@ -44,22 +42,28 @@ function checkFolderIfEmpty(dir_path){
 
 
 
-app.get('/api', (req, res) => {
+app.get('/api/getImages', (req, res) => {
 
 	let dir_path = "./items";
 	let brand_dirs;
 	let i = 0;
-/*
+
 	if (checkFolderExist(dir_path) == true){
 		brand_dirs = checkFolderIfEmpty(dir_path);
-		console.log(dir_path + "/" + brand_dirs[1]);
-		res.send(dir_path + "/" + brand_dirs[1]);
+
+		var base64 = Buffer.from(brand_dirs[0]).toString('base64');
+        base64='data:image/png;base64,'+base64;
+		console.log("base64 Data is " + base64);
+        res.send(base64);
+		
+		//console.log(dir_path + "/" + brand_dirs[1]);
+		//res.send(dir_path + "/" + brand_dirs[1]);
 		//
 		//res.send("Ordddd");
 	}
 	else if (checkFolder(dir_path) == false)
 		res.send("Item folder found");	
-*/	
+	
 		res.send("Text from server");
 });
 
