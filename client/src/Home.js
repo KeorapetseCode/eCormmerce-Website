@@ -8,47 +8,37 @@ import './styles/Home.css';
 
 function Home() {
 
-	const [imgs, setImgs] = useState('');
-
-	function arrayBufferToBase64(buffer) {
-		var binary = '';
-		var bytes = [].slice.call(new Uint8Array(buffer));
-		bytes.forEach((b) => binary += String.fromCharCode(b));
-	  
-		return window.btoa(binary);
-	  }
+	var [imgNames, setNames] = useState('');
+	var [load_s, setLoadingStatus] = useState(false);
 
 	useEffect(() => {
 		var fetchBack = async () =>{
-
-			let headers = new Headers({'X-Mashape-Key': 'API_KEY'});
-			let options = {
-				method: 'GET',
-				headers: headers,
-				mode: 'cors',
-				cache: 'default'
-			};
-
-			const resp = await fetch("/api/getImages", options);
+			const resp = await fetch("/api/imageNames");
+			const names_info = await resp.json();
 			
-			const buffer = await resp.arrayBuffer();
-
-			let base64Flag = 'data:image/jpeg;base64,';
-			let imageStr = arrayBufferToBase64(buffer);
-			let imgData = base64Flag + imageStr;
-
-			console.log("The data is = " + imageStr);
-			setImgs(imgData);
+			console.log("The names are " + names_info.username);
+			setNames(names_info.username);
+			setLoadingStatus(true);
 		}
 		fetchBack();
 	}, []);
-	
+
 	return (
 		<div>
-			<div>Here's your Folder Array</div>
-			<div>{imgs}</div>
+			{!load_s ?<div>loading...!</div>
+				:(
+					<div>
+						<div>It loaded</div>
+						<div>{imgNames}</div>
+					</div>
+				)
+			}
 		</div>
-	)
+	);
 }
-
+/*
+					<img className="prod_image"
+						src={'/Rabbit Gang/Rabbit Gang Cover.'}
+						alt={"item goes here"}/>)
+						*/
 export default Home

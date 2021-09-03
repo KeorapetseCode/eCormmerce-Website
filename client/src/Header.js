@@ -1,9 +1,7 @@
 import React from 'react';
 
 import './styles/Header.css';
-
 import SearchIcon from '@material-ui/icons/Search';
-
 import main_logo from './items/logo192.png';
 
 function Header() {
@@ -11,26 +9,14 @@ function Header() {
 		<div className='header'>
 
 			<img className="header_logo"
-			src={main_logo}  alt={"The Logo Goes Here"} 
+				src={main_logo}  alt={"The Main Logo Goes Here"} 
 			/>
 
 			<div className="header_search">
-					<input className="header_searchInput"
-					type="text"
-					/>
+					<input className="header_searchInput"type="text"/>
 					<SearchIcon
 					className="header_searchIcon" />
-
 			</div>
-			<div className="header_nav">
-				<div className="header_option">
-					<span className="header_optionLineOne">
-						Hello Guest
-					</span>
-				</div>
-
-			</div>
-
 		</div>
 
 	)
