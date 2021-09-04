@@ -2,14 +2,13 @@ import React from 'react';
 
 import './styles/Header.css';
 import SearchIcon from '@material-ui/icons/Search';
-import main_logo from './items/logo192.png';
 
 function Header() {
 	return(
 		<div className='header'>
 
 			<img className="header_logo"
-				src={main_logo}  alt={"The Main Logo Goes Here"} 
+				src={"/logo512.png"}  alt={"The Main Logo Goes Here"} 
 			/>
 
 			<div className="header_search">

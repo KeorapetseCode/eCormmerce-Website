@@ -8,30 +8,55 @@ import './styles/Home.css';
 
 function Home() {
 
-	var [imgNames, setNames] = useState('');
-	var [load_s, setLoadingStatus] = useState(false);
+	var [dirs_names, setDirs] = useState('');
+	var [load_dirNames, setDirStatus] = useState(false);
 
 	useEffect(() => {
-		var fetchBack = async () =>{
-			const resp = await fetch("/api/imageNames");
-			const names_info = await resp.json();
+		var fetchDirs = async () =>{
+			const resp = await fetch("/api/folderNames");
+			const folder_names = await resp.text();
 			
-			console.log("The names are " + names_info.username);
-			setNames(names_info.username);
-			setLoadingStatus(true);
+			setDirs(folder_names);
+			setDirStatus(true);
 		}
-		fetchBack();
+		fetchDirs();
 	}, []);
+
+
+	var [files_names, setFile] = useState('');
+	var [load_fileNames, setFileStatus] = useState(false);
+
+	useEffect(() => {
+		var fetchNames = async () =>{
+			const resp = await fetch("/api/fileNames");
+			const file_names = await resp.json();
+
+			setFile(file_names.username);
+			setFileStatus(true);
+		}
+		fetchNames();
+	}, []);
+
+
 
 	return (
 		<div>
-			{!load_s ?<div>loading...!</div>
+			{!load_dirNames ?<div>loading...!</div>
 				:(
 					<div>
 						<div>It loaded</div>
-						<div>{imgNames}</div>
+						<div>{dirs_names}</div>
 					</div>
 				)
+			}
+			{!load_fileNames ? <div>loading names...!</div>
+				:(
+					<div>
+						<div>It loaded Names</div>
+						<div>{files_names}</div>
+					</div>
+				)
+
 			}
 		</div>
 	);
