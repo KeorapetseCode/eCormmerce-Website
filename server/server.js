@@ -22,7 +22,7 @@ function checkFolderExist(dir_path){
 			return true;
 		}
 		else if (fs.existsSync(dir_path) === false){
-			console.log("Directory does not exist ## " + dir_path + "\n");
+			//console.log("Directory does not exist ## " + dir_path + "\n");
 			return false;
 		}
 	}
@@ -37,10 +37,10 @@ function checkFolderIfEmpty(dir_path){
 	let dirs = -1;
 	try{
 		dirs = fs.readdirSync(dir_path);
-		console.log("Folder Is " + dir_path);
+		//console.log("Folder Is " + dir_path);
 	}
 	catch{
-		console.log("Cannot read how many contents in item folder");
+		//console.log("Cannot read how many contents in item folder");
 		return -1;
 	}
 	return dirs;
@@ -69,14 +69,29 @@ function getFolderNames(dir_path){
 }
 
 
+/* This function returns a json file, associating every folder with its
+	images.
+*/
+function getAllImages(main_path){
 
+	let dir_names = getFolderNames(main_path);
+	var file_names = {};
+
+	file_names = fs.readdirSync(dir_pat + '/'+ dir_names[0]);
+
+
+	return file_names;
+}
+var jsonVar = getAllImages(dir_pat);
+console.log(jsonVar);
+
+//Sending Folder Names
 app.get('/api/folderNames', (req, res) => {
 
 	let dir_pat = path.join(__dirname, 'items');
 	let dir_names = getFolderNames(dir_pat);
 	res.send(dir_names);
 });
-
 
 
 /* The function is going to return a directory's image names,
@@ -87,16 +102,7 @@ app.get('/api/fileNames', (req, res) => {
 });
 
 
-/* This function returns a json file, associating every folder with its
-	images.
-*/
-app.get('/api/allImages', (req, res) => {
 
-	let dir_pat = path.join(__dirname, 'items');
-	let dir_names = getFolderNames(dir_pat);
-
-
-});
 
 
 const port = 5001;
