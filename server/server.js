@@ -75,13 +75,15 @@ function getFolderNames(dir_path){
 function getAllImages(main_path){
 
 	let dir_names = getFolderNames(main_path);
-	var file_names = {};
+	var file_names = [];
 
-	file_names = fs.readdirSync(dir_pat + '/'+ dir_names[0]);
-
-
+	for (let a = 0; a < dir_names.length; a++){
+		file_names.push( {'Brand_Name' : dir_names[a], 
+		'items' : fs.readdirSync(dir_pat + '/'+ dir_names[a])});
+	}
 	return file_names;
 }
+		
 var jsonVar = getAllImages(dir_pat);
 console.log(jsonVar);
 
