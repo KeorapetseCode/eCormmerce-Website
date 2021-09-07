@@ -44,7 +44,7 @@ function Home() {
 				:(
 					<div>
 						<div>It loaded</div>
-						<div>{itemList.items[2]}</div>
+						<div>{itemList[0].items}</div>
 					</div>
 				)
 			}

@@ -82,20 +82,19 @@ app.get('/api/folderNames', (req, res) => {
 });
 
 
-app.get('/api/getAllItems', (req, res) => {
+
+/*Making an array of Objects and sending it to front-end as a
+single json object.
+*/ 
+app.get('/api/getAllItems', (req,res) =>{
 
 	var dir_names = getFolderNames(dir_pat);
-	var allItems = {'items': ''};
-	/*
+	var allItems = {};
+	
 	for (let a = 0; a < dir_names.length; a++){
-		allItems.push( {'Brand_Name' : dir_names[a], 
-		'Items' : fs.readdirSync(dir_pat + '/'+ dir_names[a])});
-	}*/
-	
-	//allItems.push( {'Items' : fs.readdirSync(dir_pat + '/'+ dir_names[0])});
-	allItems.items = fs.readdirSync(dir_pat + '/'+ dir_names[0]);
-	//console.log(allItems);
-	
+		allItems[a] = {'brand' : dir_names[a],
+		'items' : fs.readdirSync(dir_pat + '/'+ dir_names[a])}; 
+	}
 	res.setHeader('Content-Type', 'application/json');
 	res.json(allItems);
 });
