@@ -7,7 +7,7 @@ import './styles/Home.css';
 //const fs = require("fs");
 
 function Home() {
-
+/*
 	var [dirs_names, setDirs] = useState('');
 	var [load_dirNames, setDirStatus] = useState(false);
 
@@ -21,42 +21,32 @@ function Home() {
 		}
 		fetchDirs();
 	}, []);
+*/
 
-
-	var [files_names, setFile] = useState('');
-	var [load_fileNames, setFileStatus] = useState(false);
+	var [itemList, setList] = useState('');
+	var [load_list, setListStatus] = useState(false);
 
 	useEffect(() => {
-		var fetchNames = async () =>{
-			const resp = await fetch("/api/fileNames");
-			const file_names = await resp.json();
+		var fetchAllItems = async () =>{
+			const resp = await fetch("/api/getAllItems");
+			const itemData = await resp.json();
 
-			setFile(file_names.username);
-			setFileStatus(true);
+			//console.log("The JSON is " + itemData.Items);
+			setList(itemData);
+			setListStatus(true);
 		}
-		fetchNames();
+		fetchAllItems();
 	}, []);
-
-
 
 	return (
 		<div>
-			{!load_dirNames ?<div>loading...!</div>
+			{!load_list ?<div>loading...!</div>
 				:(
 					<div>
 						<div>It loaded</div>
-						<div>{dirs_names}</div>
+						<div>{itemList.items[2]}</div>
 					</div>
 				)
-			}
-			{!load_fileNames ? <div>loading names...!</div>
-				:(
-					<div>
-						<div>It loaded Names</div>
-						<div>{files_names}</div>
-					</div>
-				)
-
 			}
 		</div>
 	);

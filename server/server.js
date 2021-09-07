@@ -72,20 +72,6 @@ function getFolderNames(dir_path){
 /* This function returns a json file, associating every folder with its
 	images.
 */
-function getAllImages(main_path){
-
-	let dir_names = getFolderNames(main_path);
-	var file_names = [];
-
-	for (let a = 0; a < dir_names.length; a++){
-		file_names.push( {'Brand_Name' : dir_names[a], 
-		'items' : fs.readdirSync(dir_pat + '/'+ dir_names[a])});
-	}
-	return file_names;
-}
-		
-var jsonVar = getAllImages(dir_pat);
-console.log(jsonVar);
 
 //Sending Folder Names
 app.get('/api/folderNames', (req, res) => {
@@ -96,15 +82,23 @@ app.get('/api/folderNames', (req, res) => {
 });
 
 
-/* The function is going to return a directory's image names,
-	based on the franchise selected. (That info will be sent by req var)
-*/
-app.get('/api/fileNames', (req, res) => {
-	res.json({"username": "Keoagile"});
+app.get('/api/getAllItems', (req, res) => {
+
+	var dir_names = getFolderNames(dir_pat);
+	var allItems = {'items': ''};
+	/*
+	for (let a = 0; a < dir_names.length; a++){
+		allItems.push( {'Brand_Name' : dir_names[a], 
+		'Items' : fs.readdirSync(dir_pat + '/'+ dir_names[a])});
+	}*/
+	
+	//allItems.push( {'Items' : fs.readdirSync(dir_pat + '/'+ dir_names[0])});
+	allItems.items = fs.readdirSync(dir_pat + '/'+ dir_names[0]);
+	//console.log(allItems);
+	
+	res.setHeader('Content-Type', 'application/json');
+	res.json(allItems);
 });
-
-
-
 
 
 const port = 5001;
