@@ -4,20 +4,20 @@ import "./styles/Product.css";
 //import one_prod from './img/GodBlessMyHustle/Brown Cap.jpg'
 
 
-function Product({prod_title, prod_price, prod_quantity}) {
+function Product(props) {
+	//console.log(props.src);
 	return (
 		<div className="product">
 			<div className="product__info">
-				<p className="product_title">{prod_title}</p>
-				<p className="product_price">{prod_price}</p>
-				<p className="product_quantity">{prod_quantity}</p>
-				{/*
+			
 				<img className="prod_image"
-					src={prod_image}
+					src={props.src}
 					alt={"item goes here"}
 				/>
-				*/}
+				<div className="order_btn">
 				<button>Place Order</button>
+				</div>
+				
 			</div>
 		</div>
 	)

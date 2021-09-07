@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './styles/Home.css';
+//import './styles/Home.css';
 //import packageJson from '../package.json';
 //import home_logo from '/img/logo512.png';
-//import Product from './Product.js';
+import Product from './Product.js';
 //import ImportImages from './ImportImages';
 //const fs = require("fs");
 
@@ -31,7 +31,6 @@ function Home() {
 			const resp = await fetch("/api/getAllItems");
 			const itemData = await resp.json();
 
-			//console.log("The JSON is " + itemData.Items);
 			setList(itemData);
 			setListStatus(true);
 		}
@@ -44,16 +43,12 @@ function Home() {
 				:(
 					<div>
 						<div>It loaded</div>
-						<div>{itemList[0].items}</div>
+						<div>{itemList[1].items[0]}</div>
+						<Product src={'/' + itemList[0].brand + '/' + itemList[0].items[1]}/>
 					</div>
 				)
 			}
 		</div>
 	);
 }
-/*
-					<img className="prod_image"
-						src={'/Rabbit Gang/Rabbit Gang Cover.'}
-						alt={"item goes here"}/>)
-						*/
 export default Home

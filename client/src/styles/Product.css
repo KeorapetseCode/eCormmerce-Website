@@ -12,14 +12,15 @@
 }
 
 .product > img {
-  max-height: 200px;
+  max-height: 100px;
   width: 100px;
   object-fit: contain;
   margin-bottom: 15px;
 }
 
-.product > button {
+.order_btn {
   background: aqua;
+  display: flex;
   border: 1px solid;
   margin-top: 10px;
   border-color: cadetblue;
