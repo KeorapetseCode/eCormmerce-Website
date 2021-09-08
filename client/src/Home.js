@@ -37,13 +37,10 @@ function Home(props) {
 	return (
 		<div className='home'>
 			<div className='home__container'>
-				<img className='home__image'
-					scr={"/kwathema.jpg"} alt={'Home Main'}
-				/>
 				{!load_list ?<div className='loading__icon'>loading...!</div>
 					:(
 						<div>
-							{console.log("It loaded" + itemList[0].items[0])}
+							{console.log("It loaded" + itemList[1])}
 							<div className='home__row'>
 							<Product
 								price='250'

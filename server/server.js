@@ -80,9 +80,6 @@ app.get('/api/folderNames', (req, res) => {
 	let dir_names = getFolderNames(dir_pat);
 	res.send(dir_names);
 });
-
-
-
 /*Making an array of Objects and sending it to front-end as a
 single json object.
 */ 
