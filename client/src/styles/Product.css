@@ -7,22 +7,27 @@
   padding: 20px;
   width: 100%;
   max-height: 400px;
+  min-width: 100px;
   background-color: white;
   z-index: 1;
 }
 
 .product > img {
-  max-height: 100px;
-  width: 100px;
+  max-height: 500px;
+  width: 700%;
   object-fit: contain;
   margin-bottom: 15px;
 }
 
-.order_btn {
+.product_info {
+  height: 100px;
+  margin-bottom: 15px;
+} 
+
+.product > button {
   background: aqua;
-  display: flex;
   border: 1px solid;
   margin-top: 10px;
-  border-color: cadetblue;
-  color: blanchedalmond;
+  border-color: aqua aqua aqua;
+  color: black;
 }

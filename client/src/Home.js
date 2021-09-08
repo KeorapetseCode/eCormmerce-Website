@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-//import './styles/Home.css';
-//import packageJson from '../package.json';
-//import home_logo from '/img/logo512.png';
+import './styles/Home.css';
 import Product from './Product.js';
-//import ImportImages from './ImportImages';
-//const fs = require("fs");
 
-function Home() {
+
+function Home(props) {
 /*
 	var [dirs_names, setDirs] = useState('');
 	var [load_dirNames, setDirStatus] = useState(false);
@@ -38,17 +35,29 @@ function Home() {
 	}, []);
 
 	return (
-		<div>
-			{!load_list ?<div>loading...!</div>
-				:(
-					<div>
-						<div>It loaded</div>
-						<div>{itemList[1].items[0]}</div>
-						<Product src={'/' + itemList[0].brand + '/' + itemList[0].items[1]}/>
-					</div>
-				)
-			}
+		<div className='home'>
+			<div className='home__container'>
+				<img className='home__image'
+					scr={"/kwathema.jpg"} alt={'Home Main'}
+				/>
+				{!load_list ?<div className='loading__icon'>loading...!</div>
+					:(
+						<div>
+							{console.log("It loaded" + itemList[0].items[0])}
+							<div className='home__row'>
+							<Product
+								price='250'
+								name='Winter Collection'
+								image='./GodBlessMyHustle/Black winter set.jpg'
+							/>
+							</div>
+						</div>
+					)
+				}
+			</div>
 		</div>
 	);
 }
+/* <Product src={'/' + itemList[0].brand + '/' + itemList[0].items[1]}/>
+*/
 export default Home

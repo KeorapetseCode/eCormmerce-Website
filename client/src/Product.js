@@ -1,23 +1,21 @@
 import React from 'react';
-
 import "./styles/Product.css";
-//import one_prod from './img/GodBlessMyHustle/Brown Cap.jpg'
 
-
-function Product(props) {
+function Product({price, image, name}) {
 	//console.log(props.src);
 	return (
 		<div className="product">
 			<div className="product__info">
-			
-				<img className="prod_image"
-					src={props.src}
-					alt={"item goes here"}
+				<p>{name}</p>
+				<p className='product_price'>
+					<small>R</small>
+					<strong>{price}</strong>
+				</p>
+				<img
+					src={image}
+					alt={"item display here"}
 				/>
-				<div className="order_btn">
 				<button>Place Order</button>
-				</div>
-				
 			</div>
 		</div>
 	)
