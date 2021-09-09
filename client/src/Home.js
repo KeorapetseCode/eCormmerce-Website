@@ -37,6 +37,11 @@ function Home(props) {
 	return (
 		<div className='home'>
 			<div className='home__container'>
+				<div className='home__image'>
+					<img
+					src={"./Rabbit Gang/Rabbit Gang Table.jpg"} alt={"main home"}
+					/>
+				</div>
 				{!load_list ?<div className='loading__icon'>loading...!</div>
 					:(
 						<div>
@@ -46,6 +51,11 @@ function Home(props) {
 								price='250'
 								name='Winter Collection'
 								image='./GodBlessMyHustle/Black winter set.jpg'
+							/>
+							<Product
+								price='250'
+								name='Winter Collection'
+								image='./GodBlessMyHustle/White Hat.jpg'
 							/>
 							</div>
 						</div>
