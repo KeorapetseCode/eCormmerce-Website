@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles/Home.css';
-import Product from './Product.js';
+//import Product from './Product.js';
 
 
 function Home(props) {
@@ -22,7 +22,14 @@ function Home(props) {
 
 	var [itemList, setList] = useState('');
 	var [load_list, setListStatus] = useState(false);
-
+	//var a = [0, 1, 2, 3, 4];
+	//var i = 0;
+	//var jsonLen = 0;
+	/*var user = {
+		fname:'John',
+		lname : 'Doe',
+		email:'test@test.com'
+   }*/
 	useEffect(() => {
 		var fetchAllItems = async () =>{
 			const resp = await fetch("/api/getAllItems");
@@ -30,9 +37,12 @@ function Home(props) {
 
 			setList(itemData);
 			setListStatus(true);
+			//console.log("Item Data is " + itemData);
 		}
 		fetchAllItems();
 	}, []);
+
+	
 
 	return (
 		<div className='home'>
@@ -45,7 +55,13 @@ function Home(props) {
 				{!load_list ?<div className='loading__icon'>loading...!</div>
 					:(
 						<div>
-							{console.log("It loaded" + itemList[1])}
+							{/*console.log("It loaded " + itemList[0].items)*/}
+							{
+								console.log("Object Keys " + Object.keys(itemList[0].items) + "\n")
+								
+								/*<li>{Object.keys(itemList[0])}</li>*/	
+							}
+							{/*
 							<div className='home__row'>
 							<Product
 								price='250'
@@ -57,7 +73,7 @@ function Home(props) {
 								name='Winter Collection'
 								image='./GodBlessMyHustle/White Hat.jpg'
 							/>
-							</div>
+							</div>*/}
 						</div>
 					)
 				}

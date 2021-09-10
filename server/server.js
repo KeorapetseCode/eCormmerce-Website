@@ -87,7 +87,7 @@ app.get('/api/getAllItems', (req,res) =>{
 
 	var dir_names = getFolderNames(dir_pat);
 	var allItems = {};
-	
+
 	for (let a = 0; a < dir_names.length; a++){
 		allItems[a] = {'brand' : dir_names[a],
 		'items' : fs.readdirSync(dir_pat + '/'+ dir_names[a])}; 
