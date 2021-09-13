@@ -1,5 +1,4 @@
 const mysql = require('mysql');
-//const faker = require('faker');
 
 const connection = mysql.createConnection({
     host		: 'localhost',
@@ -8,22 +7,34 @@ const connection = mysql.createConnection({
 });
 
 const resHandler = (err, dbName) => {
-    if (err) console.log(err);
-    console.log('table ${dbName} created..');
+    if (err)
+        console.log(`Error!! trying to do ${dbName} query\n` + err)
+    else
+        console.log(`success at ${dbName} query`);
 };
 
-let sql = 'CREATE DATABASE IF NOT EXISTS online_stolo';
+let sql = 'CREATE DATABASE IF NOT EXISTS OnlineStolo';
 connection.query(sql, err => {
-    if (err) console.log("Cannot create database\n" + err);
-    console.log('database created..');
+    if (err)
+        console.log("Cannot Create Database\n" + err)
+    else
+        console.log('Database Created!!');
 });
 
-sql = 'CREATE TABLE IF NOT EXISTS online_stolo.Items(id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,'/
-'Item_Name VARCHAR(255) NOT NULL, Brand_Name VARCHAR(255) UNIQUE NOT NULL, Price DECIMAL(6,2) NOT NULL,'/
- 'image VARCHAR(1500) NOT NULL, Item_UID VARCHAR(1500) UNIQUE NOT NULL'; 
-connection.query(sql, err => resHandler(err, 'Items'));
-/*
+//sql = 'CREATE TABLE IF NOT EXISTS OnlineStolo.items(id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY, ItemName VARCHAR(255) NOT NULL, BrandName VARCHAR(255) NOT NULL)';
+//connection.query(sql, err => resHandler(err, 'Items'));
 
+sql = `CREATE TABLE IF NOT EXISTS OnlineStolo.Items(
+		id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,\ 
+ 		ItemName VARCHAR(255) NOT NULL,\
+		FranchiseName VARCHAR(255) NOT NULL,\
+		Price DECIMAL(6,2) NOT NULL,\
+		Image VARCHAR(1500) NOT NULL,\
+		ItemUid VARCHAR(255) NOT NULL)`;
+
+connection.query(sql, err => resHandler(err, 'Items'));
+
+/*
 Random Alpha Numeric For Item_UID column
 Math.random().toString(36).slice(2)
 The alpha numeric will be written in JS and will be inserted when upload of Item is made.
