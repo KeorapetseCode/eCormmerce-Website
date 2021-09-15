@@ -66,21 +66,36 @@ function populate(){
 	
 	let dir_path = path.join(__dirname, 'items');
 	let dir_names = getFolderNames(dir_path);
+	let dir_total = dir_names.length;
 	var allItems = [];
 
 	var price = 250.00;
-	var pic;
-	var item_uid;
+	var err_var = null;
+	//var pic;
+	//var item_uid;
+	let sql;
 
-	for (let x = 0; x < dir_names.length; x++){
-		allItems.push = fs.readdirSync(dir_path + '/'+ dir_names[x]);
-		
-
-
+	for (let x = 0; x < dir_total; x++){
+		allItems.push(fs.readdirSync(dir_path + '/'+ dir_names[x]));
 	}
-	console.log(allItems);
+	for (let a = 0; a < dir_total; a++){
+		for (let i = 0; i < allItems[a].length; i++){
+			sql = 
+					"INSERT INTO OnlineStolo.Items (ItemName, FranchiseName, Price)"+
+					" VALUES ('"+ allItems[a][i] +"','"+ dir_names[a] +"', "+ price +")";
+					
+					connection.query(sql, err => {
+						if (err){ 
+							console.log("Error While Trying To Insert!!\n");
+							//err_var = true;
+						}
+					});
+		}
+	}
+	//console.log(allItems[0].length);
 }
 populate();
+connection.end();
 /*
 
 */
