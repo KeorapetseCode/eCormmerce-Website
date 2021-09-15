@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
     host		: 'localhost',
     user		: 'root',
-    password	: ''
+    password	: 'Keo@MySQL123'
 });
 
 const resHandler = (err, dbName) => {
@@ -20,9 +20,6 @@ connection.query(sql, err => {
     else
         console.log('Database Created!!');
 });
-
-//sql = 'CREATE TABLE IF NOT EXISTS OnlineStolo.items(id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY, ItemName VARCHAR(255) NOT NULL, BrandName VARCHAR(255) NOT NULL)';
-//connection.query(sql, err => resHandler(err, 'Items'));
 
 sql = `CREATE TABLE IF NOT EXISTS OnlineStolo.Items(
 		id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,\ 
