@@ -5,7 +5,11 @@ const connection = mysql.createConnection({
     user		: 'root',
     password	: ''
 });
-
+/*
+THESE COMMANDS(queries) ARE TO RESET THE MYSQL AUTHENTICATION CREDINTIALS(they should be ran on an sql client command line)
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'your new password';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your new password';
+*/
 const resHandler = (err, dbName) => {
     if (err)
         console.log(`Error!! trying to do ${dbName} query\n` + err)

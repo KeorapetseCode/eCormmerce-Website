@@ -8,7 +8,11 @@ const resHandler = (err, dbName) => {
     else
         console.log(`success at ${dbName} query`);
 };
-
+/*
+THESE COMMANDS(queries) ARE TO RESET THE MYSQL AUTHENTICATION CREDINTIALS(they should be ran on an sql client command line)
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'your new password';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your new password';
+*/
 function checkFolderExist(dir_path){
 
 	try {
@@ -85,7 +89,7 @@ function populate(){
 					" VALUES ('"+ allItems[a][i] +"','"+ dir_names[a] +"', "+ price +")";
 					
 					connection.query(sql, err => {
-						if (err){ 
+						if (err){
 							console.log("Error While Trying To Insert!!\n");
 							//err_var = true;
 						}
