@@ -74,7 +74,7 @@ function populate(){
 
 	for (let x = 0; x < dir_names.length; x++){
 		allItems.push = fs.readdirSync(dir_path + '/'+ dir_names[x]);
-
+		
 
 
 	}
