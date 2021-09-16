@@ -73,7 +73,7 @@ function populate(){
 	let dir_names = getFolderNames(dir_path);
 	let dir_total = dir_names.length;
 	let allItems = [];
-
+	let itemNames = [];
 	let price = 250.00;
 	var err_var = null;
 	let pic;
@@ -82,28 +82,29 @@ function populate(){
 
 //	adding all images to a 2d array	
 	for (let x = 0; x < dir_total; x++){
-		allItems.push(fs.readdirSync(dir_path + '/'+ dir_names[x]));
+		allItems.push(fs.readdirSync(dir_path + '\\'+ dir_names[x]));
 	}
 
 //	Spiting the names of Items the '.jpg/png' extension	
 	for (let i = 0; i < dir_total; i++){
 		for (let b = 0; b < allItems[i].length; b++){
-			allItems[i][b] = allItems[i][b].split('.')[0];
+			itemNames.push(allItems[i][b].split('.')[0]);
 		}
 	}
-	//allItems[0][0] = allItems[0][0].split('.')[0];
-	//console.log(allItems);
-	/*
+	//console.log();
+	
 	for (let a = 0; a < dir_total; a++){
 		for (let i = 0; i < allItems[a].length; i++){
 			
-			pic = dir_path + '/' + allItems[a][i];
+			//pic = dir_path + '/' + allItems[a][i];
+			pic = dir_path +'\\' + dir_names[a] + '\\' + allItems[a][i]
+			
 			//console.log("Pic is: " + pic + "\n");
 			item_uid = Math.random().toString(36).slice(2);
 
 			sql = 
-					`INSERT INTO OnlineStolo.Items (ItemName, FranchiseName, Price, ItemUid)`+
-					` VALUES ('`+ allItems[a][i] +`','`+ dir_names[a] +`','`+ price +`','` + item_uid +`')`;
+					`INSERT INTO OnlineStolo.Items (ItemName, FranchiseName, Price, Image, ItemUid)`+
+					` VALUES ('`+ allItems[a][i] +`','`+ dir_names[a] +`','`+ price +`','`+ pic +`','`+ item_uid +`')`;
 
 					connection.query(sql, err => {
 						if (err){
@@ -112,7 +113,7 @@ function populate(){
 						}
 					});
 		}
-	}*/
+	}
 	//console.log(allItems[0].length);
 }
 populate();
