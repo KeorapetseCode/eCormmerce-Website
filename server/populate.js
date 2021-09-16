@@ -1,6 +1,7 @@
 const connection = require('./config/database');
 const fs = require('fs');
 const path = require('path');
+//const faker = require('faker');
 
 const resHandler = (err, dbName) => {
     if (err)
@@ -71,12 +72,12 @@ function populate(){
 	let dir_path = path.join(__dirname, 'items');
 	let dir_names = getFolderNames(dir_path);
 	let dir_total = dir_names.length;
-	var allItems = [];
+	let allItems = [];
 
-	var price = 250.00;
+	let price = 250.00;
 	var err_var = null;
-	//var pic;
-	//var item_uid;
+	let pic;
+	let item_uid;
 	let sql;
 
 	for (let x = 0; x < dir_total; x++){
@@ -84,13 +85,18 @@ function populate(){
 	}
 	for (let a = 0; a < dir_total; a++){
 		for (let i = 0; i < allItems[a].length; i++){
+			
+			pic = dir_path + '/' + allItems[a][i];
+			//console.log("Pic is: " + pic + "\n");
+			item_uid = Math.random().toString(36).slice(2);
+			//item_uid = "Keoagile1234";
 			sql = 
-					"INSERT INTO OnlineStolo.Items (ItemName, FranchiseName, Price)"+
-					" VALUES ('"+ allItems[a][i] +"','"+ dir_names[a] +"', "+ price +")";
-					
+					`INSERT INTO OnlineStolo.Items (ItemName, FranchiseName, Price, ItemUid)`+
+					` VALUES ('`+ allItems[a][i] +`','`+ dir_names[a] +`','`+ price +`','` + item_uid +`')`;
+
 					connection.query(sql, err => {
 						if (err){
-							console.log("Error While Trying To Insert!!\n");
+							console.log("Error While Trying To Insert!!\n" + err);
 							//err_var = true;
 						}
 					});

@@ -27,11 +27,11 @@ connection.query(sql, err => {
 
 sql = `CREATE TABLE IF NOT EXISTS OnlineStolo.Items(
 		id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,\ 
- 		ItemName VARCHAR(255) NOT NULL,\
-		FranchiseName VARCHAR(255) NOT NULL,\
-		Price DECIMAL(6,2) NOT NULL,\
-		Image VARCHAR(1500) NOT NULL,\
-		ItemUid VARCHAR(255) NOT NULL)`;
+ 		ItemName VARCHAR(255) DEFAULT NULL,\
+		FranchiseName VARCHAR(255) DEFAULT NULL,\
+		Price DECIMAL(6,2) DEFAULT NULL,\
+		Image VARCHAR(1500) DEFAULT NULL,\
+		ItemUid VARCHAR(255) DEFAULT NULL)`;
 
 connection.query(sql, err => resHandler(err, 'Items'));
 
