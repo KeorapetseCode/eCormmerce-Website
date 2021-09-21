@@ -22,14 +22,7 @@ function Home(props) {
 
 	var [itemList, setList] = useState('');
 	var [load_list, setListStatus] = useState(false);
-	//var a = [0, 1, 2, 3, 4];
-	//var i = 0;
-	//var jsonLen = 0;
-	/*var user = {
-		fname:'John',
-		lname : 'Doe',
-		email:'test@test.com'
-   }*/
+
 	useEffect(() => {
 		var fetchAllItems = async () =>{
 			const resp = await fetch("/api/getAllItems");
@@ -37,11 +30,9 @@ function Home(props) {
 
 			setList(itemData);
 			setListStatus(true);
-			//console.log("Item Data is " + itemData);
 		}
 		fetchAllItems();
 	}, []);
-
 	
 
 	return (

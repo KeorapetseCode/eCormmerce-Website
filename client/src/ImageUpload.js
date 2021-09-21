@@ -15,10 +15,25 @@ function ImageUpload(){
 
 		const formData = new FormData();
 		formData.append('File', imgfile);
-
+		/*
 		const sendImg = fetch('/api/imageFile',{method: 'POST',body: formData});
 		const response = sendImg.json();
-
+		*/
+		fetch(
+			'/api/imageFile',
+			{
+				method: 'POST',
+				body: formData,
+			}
+		)
+			.then((response) => response.json())
+			.then((result) => {
+				console.log('Success:', result);
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+	};
 
 	};
 

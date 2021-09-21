@@ -2,7 +2,16 @@ const connection = require('./config/database');
 const fs = require('fs');
 const path = require('path');
 //const faker = require('faker');
+const multer = require('multer');
+const express = require('express');
+const bodyParser = require("body-parser");
 
+//const app = express();
+
+//app.set('prod_imgs', __dirname + '/items');
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+//app.use(express.static(path.join(__dirname, "public")));
 const resHandler = (err, dbName) => {
     if (err)
         console.log(`Error!! trying to do ${dbName} query\n` + err)
@@ -10,9 +19,9 @@ const resHandler = (err, dbName) => {
         console.log(`success at ${dbName} query`);
 };
 /*
-THESE COMMANDS(queries) ARE TO RESET THE MYSQL AUTHENTICATION CREDINTIALS(they should be ran on an sql client command line)
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'your new password';
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your new password';
+THE FOLLOWING COMMANDS(queries) ARE TO RESET THE MYSQL AUTHENTICATION CREDINTIALS(they should be ran on an sql client command line)
+-ALTER USER 'root'@'localhost' IDENTIFIED BY 'your new password';
+-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your new password';
 */
 function checkFolderExist(dir_path){
 
@@ -67,6 +76,41 @@ function getFolderNames(dir_path){
 		return ret;
 }
 
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+	  cb(null, 'images/')
+	},
+	filename: function (req, file, cb) {
+	  cb(null, file.originalname)
+	  // cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+	},  
+  });
+
+  const limits = {
+    fileSize : 4000000
+}
+
+const fileFilter =(req, file, cb) => {
+	//if the file is not a jpg, jpeg, or png file, do not upload it multer; reject it.
+	if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+		return cb(new Error('File must be of type JPG, JPEG, or PNG and nore more than 2MB in size'))
+	}
+	//undefined = nothing went wrong; true = that is true, nothing went wrong, accept the upload.
+	cb(undefined, true)
+  }
+  
+  //set up the multer middleware
+  const upload = multer({
+	  storage: storage,
+	  limits: limits,
+	  fileFilter: fileFilter
+	  // filename: filename
+	})
+  
+
+
+
+
 function populate(){
 	
 	let dir_path = path.join(__dirname, 'items');
@@ -76,7 +120,7 @@ function populate(){
 	let itemNames = [];
 	let price = 250.00;
 	var err_var = null;
-	let pic;
+	let pic = null;
 	let item_uid;
 	let sql;
 
@@ -96,15 +140,18 @@ function populate(){
 	for (let a = 0; a < dir_total; a++){
 		for (let i = 0; i < allItems[a].length; i++){
 			
-			//pic = dir_path + '/' + allItems[a][i];
-			pic = dir_path +'\\' + dir_names[a] + '\\' + allItems[a][i]
-			
-			//console.log("Pic is: " + pic + "\n");
+			pic = dir_path +'\\' + dir_names[a] + '\\' + allItems[a][i];
+			//pic = fs.readFileSync(dir_path +'\\' + dir_names[a] + '\\' + allItems[a][i]);
+			/*console.log("Pic is: " + pic + "\n");
+			if (i > 0){
+				break;
+			}
+			*/
 			item_uid = Math.random().toString(36).slice(2);
 
 			sql = 
 					`INSERT INTO OnlineStolo.Items (ItemName, FranchiseName, Price, Image, ItemUid)`+
-					` VALUES ('`+ allItems[a][i] +`','`+ dir_names[a] +`','`+ price +`','`+ pic +`','`+ item_uid +`')`;
+					` VALUES ('`+ itemNames[a][i] +`','`+ dir_names[a] +`','`+ price +`','`+ pic +`','`+ item_uid +`')`;
 
 					connection.query(sql, err => {
 						if (err){
