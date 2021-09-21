@@ -30,7 +30,7 @@ sql = `CREATE TABLE IF NOT EXISTS OnlineStolo.Items(
  		ItemName VARCHAR(255) DEFAULT NULL,\
 		FranchiseName VARCHAR(255) DEFAULT NULL,\
 		Price DECIMAL(6,2) DEFAULT NULL,\
-		Image VARCHAR(1500) DEFAULT NULL,\
+		Image VARCHAR(225) DEFAULT NULL,\
 		ItemUid VARCHAR(255) DEFAULT NULL)`;
 
 connection.query(sql, err => resHandler(err, 'Items'));
