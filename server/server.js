@@ -58,14 +58,14 @@ function getFolderNames(dir_path){
 		for (let i = 0; i < dirs.length; i++){
 			check = fs.statSync(dir_path + "/" + dirs[i]);
 			if(check.isDirectory() === true){
-				ret = ret.concat(dirs[i]);
+				ret.push(dirs[i]);
 			}
 		}
 	}
 	else if (checkFolderIfEmpty(dir_path) === false)
 		dirs = "Item folder found";
-	console.log("Import Image " + ret);
-//	return ret;
+	//console.log("Import Image " + ret);
+	return ret;
 }
 
 
@@ -74,13 +74,14 @@ function getFolderNames(dir_path){
 */
 
 //Sending Folder Names
-/*
+
 app.get('/api/folderNames', (req, res) => {
 
 	let dir_pat = path.join(__dirname, 'items');
 	let dir_names = getFolderNames(dir_pat);
+	//console.log("Dir path is " + dir_names);
 	res.send(dir_names);
-});*/
+});
 /*Making an array of Objects and sending it to front-end as a
 single json object.
 */ 

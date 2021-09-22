@@ -4,8 +4,8 @@ import './styles/Home.css';
 
 
 function Home(props) {
-/*
-	var [dirs_names, setDirs] = useState('');
+
+	var [dirs_names, setDirs] = useState([]);
 	var [load_dirNames, setDirStatus] = useState(false);
 
 	useEffect(() => {
@@ -15,11 +15,13 @@ function Home(props) {
 			
 			setDirs(folder_names);
 			setDirStatus(true);
+			//let ans = Array.isArray(dirs_names);
+			//console.log("is it arr " + ans);
 		}
 		fetchDirs();
 	}, []);
-*/
 
+/*
 	var [itemList, setList] = useState('');
 	var [load_list, setListStatus] = useState(false);
 
@@ -34,44 +36,22 @@ function Home(props) {
 		fetchAllItems();
 	}, []);
 	
-
+*/
 	return (
 		<div className='home'>
 			<div className='home__container'>
-				<div className='home__image'>
-					<img
-					src={"./Rabbit Gang/Rabbit Gang Table.jpg"} alt={"main home"}
-					/>
-				</div>
-				{!load_list ?<div className='loading__icon'>loading...!</div>
-					:(
-						<div>
-							{/*console.log("It loaded " + itemList[0].items)*/}
-							{
-								console.log("Object Keys " + Object.keys(itemList[0].items) + "\n")
-								
-								/*<li>{Object.keys(itemList[0])}</li>*/	
-							}
-							{/*
-							<div className='home__row'>
-							<Product
-								price='250'
-								name='Winter Collection'
-								image='./GodBlessMyHustle/Black winter set.jpg'
-							/>
-							<Product
-								price='250'
-								name='Winter Collection'
-								image='./GodBlessMyHustle/White Hat.jpg'
-							/>
-							</div>*/}
-						</div>
-					)
-				}
+			{!load_dirNames ? <div className='loading__icon'>loading...!</div>
+			:(
+				<ol>
+					{dirs_names.map((brand) => {
+						return <li>{brand}</li>;
+					})}
+				</ol>
+					/*<div>{dirs_names}</div>*/
+			)
+			}
 			</div>
 		</div>
 	);
 }
-/* <Product src={'/' + itemList[0].brand + '/' + itemList[0].items[1]}/>
-*/
 export default Home
