@@ -25,17 +25,17 @@ function MultProducts() {
 			<div className='home__container'>
 			{!loadNames ? <div className='loading__icon'>loading...!</div>
 			:(
-				<ul>
+				<Grid container justify='center' spacing={4}>
 				{itemNames.map((single_item) => (
-					<li key={single_item}>
+					<Grid item key={single_item} xs={12} sm={6} md={4} lg={3}>
 					<Product
 						price='250'
 						name='Winter Collection'
 						image={single_item}
 					/>
-					</li>
+					</Grid>
 				  ))}
-				</ul>
+				</Grid>
 			)
 			}
 			</div>
