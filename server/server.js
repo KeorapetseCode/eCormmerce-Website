@@ -74,7 +74,6 @@ function getFolderNames(dir_path){
 */
 
 //Sending Folder Names
-
 app.get('/api/folderNames', (req, res) => {
 
 	let dir_pat = path.join(__dirname, 'items');
@@ -86,19 +85,43 @@ app.get('/api/folderNames', (req, res) => {
 single json object.
 */ 
 /*
+function allItems(){
+
+	let all_prod = [];
+	var dir_names = getFolderNames(dir_pat);
+	
+	for (let a = 0; a < dir_names.length; a++){
+		all_prod.push(fs.readdirSync(dir_pat + '/'+ dir_names[a])); 
+	}
+	//console.log("dir names" + dir_names);
+	console.log("All products are " + all_prod + "\n");
+}
+allItems();
+*/
 app.get('/api/getAllItems', (req,res) =>{
 
-	var dir_names = getFolderNames(dir_pat);
-	var allItems = {};
+	let all_prod = [];
+	let dir_names = getFolderNames(dir_pat);
+	let pic = [];
+	let x = 0;
 
 	for (let a = 0; a < dir_names.length; a++){
-		allItems[a] = {'brand' : dir_names[a],
-		'items' : fs.readdirSync(dir_pat + '/'+ dir_names[a])}; 
+		pic = fs.readdirSync(dir_pat + '/'+ dir_names[a]);
+		
+		while (x < pic.length){
+			pic[x] = dir_names[a]  + '/' + pic[x];
+			all_prod.push(pic[x]);
+			x++;
+		}
+		x = 0;
+		 
 	}
+	//console.log("dir names" + dir_names);
+	//console.log("All products are " + all_prod + "\n");
 	res.setHeader('Content-Type', 'application/json');
-	res.json(allItems);
+	res.json(all_prod);
 });
-*/
+
 
 const port = 5001;
 

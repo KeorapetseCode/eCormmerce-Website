@@ -5,16 +5,16 @@ import './styles/Home.css';
 
 function Home(props) {
 
-	var [dirs_names, setDirs] = useState([]);
-	var [load_dirNames, setDirStatus] = useState(false);
+	var [itemNames, setItems] = useState([]);
+	var [loadNames, setNamesStatus] = useState(false);
 
 	useEffect(() => {
 		var fetchDirs = async () =>{
-			const resp = await fetch("/api/folderNames");
-			const folder_names = await resp.json();
+			const resp = await fetch("/api/getAllItems");
+			const items = await resp.json();
 			
-			setDirs(folder_names);
-			setDirStatus(true);
+			setItems(items);
+			setNamesStatus(true);
 			//let ans = Array.isArray(dirs_names);
 			//console.log("is it arr " + ans);
 		}
@@ -40,13 +40,13 @@ function Home(props) {
 	return (
 		<div className='home'>
 			<div className='home__container'>
-			{!load_dirNames ? <div className='loading__icon'>loading...!</div>
+			{!loadNames ? <div className='loading__icon'>loading...!</div>
 			:(
-				<div>
-				{dirs_names.map((sngl_item) => (
-					<div>{sngl_item}</div>
+				<ul>
+				{itemNames.map((single_item) => (
+					<li key={single_item}>{single_item}</li>
 				  ))}
-				</div>
+				</ul>
 			)
 			}
 			</div>
