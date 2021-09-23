@@ -11,7 +11,7 @@ function Home(props) {
 	useEffect(() => {
 		var fetchDirs = async () =>{
 			const resp = await fetch("/api/folderNames");
-			const folder_names = await resp.text();
+			const folder_names = await resp.json();
 			
 			setDirs(folder_names);
 			setDirStatus(true);
@@ -42,12 +42,11 @@ function Home(props) {
 			<div className='home__container'>
 			{!load_dirNames ? <div className='loading__icon'>loading...!</div>
 			:(
-				<ol>
-					{dirs_names.map((brand) => {
-						return <li>{brand}</li>;
-					})}
-				</ol>
-					/*<div>{dirs_names}</div>*/
+				<div>
+				{dirs_names.map((sngl_item) => (
+					<div>{sngl_item}</div>
+				  ))}
+				</div>
 			)
 			}
 			</div>
