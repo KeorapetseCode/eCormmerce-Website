@@ -76,38 +76,6 @@ function getFolderNames(dir_path){
 		return ret;
 }
 
-const storage = multer.diskStorage({
-	destination: function (req, file, cb) {
-	  cb(null, 'images/')
-	},
-	filename: function (req, file, cb) {
-	  cb(null, file.originalname)
-	  // cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-	},  
-  });
-
-  const limits = {
-    fileSize : 4000000
-}
-
-const fileFilter =(req, file, cb) => {
-	//if the file is not a jpg, jpeg, or png file, do not upload it multer; reject it.
-	if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-		return cb(new Error('File must be of type JPG, JPEG, or PNG and nore more than 2MB in size'))
-	}
-	//undefined = nothing went wrong; true = that is true, nothing went wrong, accept the upload.
-	cb(undefined, true)
-  }
-  
-  //set up the multer middleware
-  const upload = multer({
-	  storage: storage,
-	  limits: limits,
-	  fileFilter: fileFilter
-	  // filename: filename
-	})
-
-
 
 function populate(){
 	
@@ -116,7 +84,7 @@ function populate(){
 	let dir_total = dir_names.length;
 	let allItems = [];
 	let itemNames = [];
-	let sngle_name
+	let sngle_name;
 	let price = 250.00;
 	var err_var = null;
 	let pic = null;
@@ -129,7 +97,7 @@ function populate(){
 	}
 	for (let a = 0; a < dir_total; a++){
 		for (let i = 0; i < allItems[a].length; i++){
-			pic = dir_path +'/' + dir_names[a] + '/' + allItems[a][i];
+			pic = dir_names[a] + '/' + allItems[a][i];
 			//pic = dir_names[a] + '/' + allItems[a][i];
 			item_uid = Math.random().toString(36).slice(2);
 			sngle_name = allItems[a][i].split('.')[0];

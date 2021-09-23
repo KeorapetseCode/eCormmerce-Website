@@ -4,8 +4,12 @@ import MultProducts from './MultProducts';
 
 function Home() {
 
-	return (
-		<MultProducts />
-	);
+		return (
+			<div className='home'>
+				<div className='home__container'>
+					<MultProducts />
+				</div>
+		</div>
+		);
 }
 export default Home

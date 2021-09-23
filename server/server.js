@@ -2,6 +2,7 @@ const { dir } = require('console');
 const express = require('express');
 const fs = require("fs");
 const path = require('path');
+const connection = require('./config/database');
 
 const app = express();
 const dir_pat = path.join(__dirname, 'items');
@@ -12,7 +13,12 @@ app.use(express.static(path.join(__dirname, 'items')));
 app.get('/', (req, res) => {
 	res.send("Your on index");
 });
-
+const resHandler = (err, dbName) => {
+    if (err)
+        console.log(`Error!! trying to do ${dbName} query\n` + err)
+    else
+        console.log(`success at ${dbName} query`);
+};
 
 function checkFolderExist(dir_path){
 
@@ -84,7 +90,7 @@ app.get('/api/folderNames', (req, res) => {
 /*Making an array of Objects and sending it to front-end as a
 single json object.
 */ 
-/*
+
 function allItems(){
 
 	let all_prod = [];
@@ -96,33 +102,24 @@ function allItems(){
 	//console.log("dir names" + dir_names);
 	console.log("All products are " + all_prod + "\n");
 }
-allItems();
-*/
-app.get('/api/getAllItems', (req,res) =>{
 
-	let all_prod = [];
-	let dir_names = getFolderNames(dir_pat);
-	let pic = [];
-	let x = 0;
 
-	for (let a = 0; a < dir_names.length; a++){
-		pic = fs.readdirSync(dir_pat + '/'+ dir_names[a]);
-		
-		while (x < pic.length){
-			pic[x] = dir_names[a]  + '/' + pic[x];
-			all_prod.push(pic[x]);
-			x++;
-		}
-		x = 0;
-		 
-	}
-	//console.log("dir names" + dir_names);
-	//console.log("All products are " + all_prod + "\n");
-	res.setHeader('Content-Type', 'application/json');
-	res.json(all_prod);
+app.get('/api/getAllItems', (req, res) => {
+
+	let sql;
+
+	sql = "SELECT * FROM OnlineStolo.Items";
+	connection.query(sql, (error, rows) => {
+		if (error) {
+			return console.error(error.message);
+		  }
+		  console.log(rows);
+		  res.setHeader('Content-Type', 'application/json');
+		  res.json(rows);
+	});
 });
 
-
+//connection.end();
 const port = 5001;
 
 app.listen(port);
