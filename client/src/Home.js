@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles/Home.css';
-//import Product from './Product.js';
+import Product from './Product.js';
 
 
 function Home(props) {
@@ -44,7 +44,13 @@ function Home(props) {
 			:(
 				<ul>
 				{itemNames.map((single_item) => (
-					<li key={single_item}>{single_item}</li>
+					<li key={single_item}>
+					<Product
+						price='250'
+						name='Winter Collection'
+						image={single_item}
+					/>
+					</li>
 				  ))}
 				</ul>
 			)
