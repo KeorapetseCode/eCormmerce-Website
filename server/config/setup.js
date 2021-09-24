@@ -12,9 +12,9 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your new
 */
 const resHandler = (err, dbName) => {
     if (err)
-        console.log(`Error!! trying to do ${dbName} query\n` + err)
+        console.log(`Error!! while trying to execute ${dbName} query\n` + err)
     else
-        console.log(`success at ${dbName} query`);
+        console.log(`success at execute ${dbName} query`);
 };
 
 let sql = 'CREATE DATABASE IF NOT EXISTS OnlineStolo';
@@ -31,14 +31,20 @@ sql = `CREATE TABLE IF NOT EXISTS OnlineStolo.Items(
 		FranchiseName VARCHAR(255) DEFAULT NULL,\
 		Price DECIMAL(6,2) DEFAULT NULL,\
 		Image VARCHAR(225) DEFAULT NULL,\
+		Quantity INT(11) DEFAULT NULL,\
 		ItemUid VARCHAR(255) DEFAULT NULL)`;
 
 connection.query(sql, err => resHandler(err, 'Items'));
 
-/*
-Random Alpha Numeric For Item_UID column
-Math.random().toString(36).slice(2)
-The alpha numeric will be written in JS and will be inserted when upload of Item is made.
-*/
+sql = null;
+
+sql =	`CREATE TABLE IF NOT EXISTS OnlineStolo.Orders(
+		id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,\
+		ItemsOrdered json DEFAULT NULL,\
+		TimeOfOrder datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\
+		OrderDelivered BOOL DEFAULT FALSE,\
+		ORDERUid VARCHAR(255) DEFAULT NULL)`;
+
+connection.query(sql, err => resHandler(err, 'Orders'));
 
 connection.end();
