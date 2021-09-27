@@ -100,7 +100,7 @@ function allItems(){
 		all_prod.push(fs.readdirSync(dir_pat + '/'+ dir_names[a])); 
 	}
 	//console.log("dir names" + dir_names);
-	console.log("All products are " + all_prod + "\n");
+	//console.log("All products are " + all_prod + "\n");
 }
 
 

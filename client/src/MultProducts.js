@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Product from './Product.js';
 import { Grid } from '@material-ui/core';
+//import './styles/MultProducts.css';
 
 
 function MultProducts() {
@@ -24,9 +25,11 @@ function MultProducts() {
 		<div className='home'>
 			{!loadNames ? <div className='loading__icon'>loading...!</div>
 			:(
+				/*<div className="products__row">*/
 				<Grid container justify='center' spacing={4}>
 				{itemNames.map((single_item) => (
-					<Grid item key={single_item} xs={5} sm={6} md={4} lg={3}>
+
+					<Grid item key={single_item} xs={12} sm={6} md={4} lg={2}>
 					<Product
 						price={single_item.Price}
 						name={single_item.ItemName}
@@ -35,6 +38,7 @@ function MultProducts() {
 					</Grid>
 				  ))}
 				</Grid>
+				/*</div>*/
 			)
 			}
 		</div>
