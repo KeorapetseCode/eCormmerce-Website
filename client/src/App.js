@@ -1,29 +1,30 @@
 import React from "react";
 import "./styles/App.css";
-import Header from './Header.js'
-import Home from './Home.js' 
 
-/*
+import Header from './Header.js';
+import Home from './Home.js';
+import Checkout from './Checkout';
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+
 function App() {
-  return (
-    <div className="app">
-		<Header />
-		<Home />
-	</div>
-  );
-}
-
-export default App;
-*/
-class App extends React.Component {
-	render() {
-		return(
-		<div className="app">
-			<Header />
-			<Home />
+	
+	return(
+		<Router>
+			<div className="app">
+				<Header />{/*The Header is rendered regardless of any page we are on*/}
+				<Switch>
+					<Route path="/checkout">
+						<Checkout />
+					</Route>
+					<Route path="/">
+						<Home />
+					</Route>
+				</Switch>
 			</div>
-		);
-	}
+		</Router>
+	);
 }
 
 export default App;

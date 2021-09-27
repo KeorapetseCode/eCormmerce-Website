@@ -26,7 +26,7 @@ function MultProducts() {
 			:(
 				<Grid container justify='center' spacing={4}>
 				{itemNames.map((single_item) => (
-					<Grid item key={single_item} xs={12} sm={6} md={4} lg={3}>
+					<Grid item key={single_item} xs={5} sm={6} md={4} lg={3}>
 					<Product
 						price={single_item.Price}
 						name={single_item.ItemName}
