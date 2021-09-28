@@ -25,15 +25,19 @@ function Home() {
 		}
 		fetchDirs();
 	}, []);
-
+	//Randomise number of contents on larger screens
+	var randomNum = () => {
+		return Math.floor(Math.random() * (4 - 8 + 1)) + 6;
+	}
+	//console.log("Random Num is " + randomNum());
 	return(
 		<div className='home'>
 			{!loadNames ? <div className='loading__icon'>loading...!</div>
 			:(
-				<Grid container justify='center' spacing={4}>
+				<Grid container justifyContent='center' spacing={1}>
 				{itemNames.map((single_item) => (
 
-					<Grid item key={single_item} xs={12} sm={6} md={4} lg={4}>
+					<Grid item key={single_item.ItemName} xs={12} sm={6} md={4} lg={4}>
 					<Product
 						price={single_item.Price}
 						name={single_item.ItemName}
