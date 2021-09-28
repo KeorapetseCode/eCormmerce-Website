@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './styles/Home.css';
 //import MultProducts from './MultProducts';
 import Product from './Product.js';
-//import { Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 
 
@@ -30,29 +30,6 @@ function Home() {
 		<div className='home'>
 			{!loadNames ? <div className='loading__icon'>loading...!</div>
 			:(
-				<div className="home__row">
-				<Product
-					price={itemNames[0].Price}
-					name={itemNames[0].ItemName}
-					image={itemNames[0].Image}
-					uid={itemNames[0].ItemUid}
-				/>
-				
-				<Product
-					price={itemNames[1].Price}
-					name={itemNames[1].ItemName}
-					image={itemNames[1].Image}
-					uid={itemNames[1].ItemUid}
-				/>
-
-				<Product
-					price={itemNames[2].Price}
-					name={itemNames[2].ItemName}
-					image={itemNames[2].Image}
-					uid={itemNames[2].ItemUid}
-				/>
-				</div>
-				/*
 				<Grid container justify='center' spacing={4}>
 				{itemNames.map((single_item) => (
 
@@ -66,7 +43,7 @@ function Home() {
 					</Grid>
 				  ))}
 				</Grid>
-				</div>*/
+				/*</div>*/
 			)
 			}
 		</div>
