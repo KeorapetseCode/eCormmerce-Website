@@ -80,6 +80,7 @@ function getFolderNames(dir_path){
 */
 
 //Sending Folder Names
+/*
 app.get('/api/folderNames', (req, res) => {
 
 	let dir_pat = path.join(__dirname, 'items');
@@ -87,6 +88,7 @@ app.get('/api/folderNames', (req, res) => {
 	//console.log("Dir path is " + dir_names);
 	res.json(dir_names);
 });
+*/
 /*Making an array of Objects and sending it to front-end as a
 single json object.
 */ 
@@ -95,7 +97,7 @@ function allItems(){
 
 	let all_prod = [];
 	var dir_names = getFolderNames(dir_pat);
-	
+
 	for (let a = 0; a < dir_names.length; a++){
 		all_prod.push(fs.readdirSync(dir_pat + '/'+ dir_names[a])); 
 	}
@@ -119,7 +121,6 @@ app.get('/api/getAllItems', (req, res) => {
 	});
 });
 
-//connection.end();
 const port = 5001;
 
 app.listen(port);

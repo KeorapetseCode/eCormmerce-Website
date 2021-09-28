@@ -1,4 +1,4 @@
-import React, { createContext, useContext, userContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 
 //Prepare dataLayer
 export const StateContext = createContext();
