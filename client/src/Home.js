@@ -26,9 +26,9 @@ function Home() {
 		fetchDirs();
 	}, []);
 	//Randomise number of contents on larger screens
-	var randomNum = () => {
+	/*var randomNum = () => {
 		return Math.floor(Math.random() * (4 - 8 + 1)) + 6;
-	}
+	}*/
 	//console.log("Random Num is " + randomNum());
 	return(
 		<div className='home'>
