@@ -1,0 +1,31 @@
+.basketItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 10px;
+  padding: 20px;
+  height: 200px;
+  width: 350px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+.basketItem__image {
+  max-height: 150px;
+  width: 50%;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+
+.basketItem__info {
+  width: 100px;
+  margin-left: 180px;
+  margin-bottom: -60px;
+}
+
+.basketItem > button {
+  background: whitesmoke;
+  border: 1px solid;
+  margin-top: 5px;
+  color: darkolivegreen;
+}

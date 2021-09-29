@@ -1,16 +1,16 @@
-import "./styles/BasketList.css";
+import "./styles/BasketItem.css";
 
-function BasketList({price, name, image, uid}) {
+function BasketItem({price, name, image, uid}) {
 	return (
 		<div className="basketItem">
-			<div className="basketItem__info">
+			<div className="basketItem__info">				
 				<p>{name}</p>
 				<p className='basketItem__price'>
 						<small>R</small>
 						<strong>{price}</strong>
 				</p>
 			</div>
-			<img
+			<img className="basketItem__image"
 				src={image}
 				alt={'basket item display here'}
 			/>
@@ -19,4 +19,4 @@ function BasketList({price, name, image, uid}) {
 	)
 }
 
-export default BasketList;
+export default BasketItem;
