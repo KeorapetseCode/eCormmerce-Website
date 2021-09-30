@@ -8,6 +8,7 @@
 }
 
 .checkout__titleCard {
+  position: sticky;
   margin-bottom: 20px;
   padding: 52px;
   border-bottom: 4px solid darkolivegreen;

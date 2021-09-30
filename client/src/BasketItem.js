@@ -7,7 +7,8 @@ function BasketItem({price, name, image, uid}) {
 
 	const removeFromBasket = () => {
 		dispatch({
-			type: "REMOVE_FROM_BASKET"
+			type: "REMOVE_FROM_BASKET",
+			uid: uid
 		})
 	};
 

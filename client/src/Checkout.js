@@ -23,13 +23,6 @@ function Checkout(){
 							price={oneItem.price}
 						/>
 					))}
-					
-					{/*<div className="checkout__basketListItem">
-						<div className="checkout__basketListItemInfo">
-							<p>{}</p>
-						</div>
-					</div>*/}
-				
 				</div>
 			)
 		}
