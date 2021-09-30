@@ -1,6 +1,16 @@
 import "./styles/BasketItem.css";
+import { useStateValue } from './StateProvider';
+
 
 function BasketItem({price, name, image, uid}) {
+	const [{ basket }, dispatch] = useStateValue();
+
+	const removeFromBasket = () => {
+		dispatch({
+			type: "REMOVE_FROM_BASKET"
+		})
+	};
+
 	return (
 		<div className="basketItem">
 			<div className="basketItem__info">				
@@ -14,7 +24,7 @@ function BasketItem({price, name, image, uid}) {
 				src={image}
 				alt={'basket item display here'}
 			/>
-			<button>Remove Item</button>
+			<button onClick={removeFromBasket}>Remove Item</button>
 		</div>
 	)
 }

@@ -1,5 +1,7 @@
 //import React from "react";
 
+import BasketItem from "./BasketItem";
+
 //When we start the basket is empty, hence the word initial. This our global variable basket.
 export const initialState = {
 	basket: [],
@@ -22,6 +24,22 @@ const reducer = (state, action) => {
 				...state,
 				basket: [...state.basket, action.item]
 			};
+
+		case "REMOVE_FROM_BASKET":
+			const index = state.basket.findIndex(
+				(basketItem) => basketItem.uid === action.uid
+			);
+			let newBasket = [...state.basket];
+
+			if (index >= 0) {
+				newBasket.splice(index, 1);
+			}
+			else{
+				console.warn(
+					`Cannot remove product (id: ${action.id}) because it
+					is not in the basket`
+				)
+			}
 
 		default:
 			return state;

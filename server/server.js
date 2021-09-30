@@ -1,4 +1,4 @@
-const { dir } = require('console');
+	const { dir } = require('console');
 const express = require('express');
 const fs = require("fs");
 const path = require('path');
@@ -115,7 +115,7 @@ app.get('/api/getAllItems', (req, res) => {
 		if (error) {
 			return console.error(error.message);
 		  }
-		  console.log(rows);
+		  //console.log(rows);
 		  res.setHeader('Content-Type', 'application/json');
 		  res.json(rows);
 	});
