@@ -4,6 +4,7 @@ import "./styles/App.css";
 import Header from './Header.js';
 import Home from './Home.js';
 import Checkout from './Checkout';
+import Navigation from "./Navigation";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -14,6 +15,7 @@ function App() {
 		<Router>
 			<div className="app">
 				<Header />{/*The Header is rendered regardless of any page we are on*/}
+				<Navigation /> 
 				<Switch>
 					<Route path="/checkout">
 						<Checkout />
