@@ -7,7 +7,7 @@ import { useStateValue } from "./StateProvider";
 //import { getBasketList } from "./reducer";
 
 function Checkout(){
-	const [{ basket }, dispatch] = useStateValue();
+	const [{ basket }] = useStateValue();
 
 	const getBasketItemsList = (basket) => {
 		let totalItems = basket?.length;

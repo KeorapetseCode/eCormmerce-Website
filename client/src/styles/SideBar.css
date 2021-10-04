@@ -1,0 +1,10 @@
+.sidebar {
+  background: linear-gradient(
+    90deg,
+    rgb(30, 60, 50) 40%,
+    rgba(10, 20, 25, 80%)
+  );
+  display: flex;
+  height: 100%;
+  width: 300px;
+}
