@@ -1,43 +1,45 @@
 import React, { useState } from "react";
-import "./styles/Sidebar.css";
 import MenuIcon from '@material-ui/icons/Menu';
 import Close from '@material-ui/icons/Close';
 import { SidebarData } from './SidebarData'
 import { Link } from 'react-router-dom';
+import "./styles/Sidebar.css";
+//import * as FaIcons from 'react-icons/fa';
+//import * as AiIcons from 'react-icons/ai';
 
 function Sidebar() {
 
 	const [sidebar, setSidebar] = useState(false);
 
-	const showSidebar = () => setSidebar(!sidebar);
+	const showSidebar = () => {
+		setSidebar(!sidebar);
+	//	console.log("side bar now is" + sidebar + "\n");
+	}
 
 	return (
 		<>
 			<div className="navbar">
-				<Link to='#' className='menu-bars'>
-					<MenuIcon onclick={showSidebar} />
-				</Link>
+				<MenuIcon onClick={showSidebar}/>
 			</div>
 
 			<nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-				<ul className='nav-menu-items'>
+
+				<ul className='nav-menu-items' onclick={showSidebar}>
 					<li className='navbar-toggle'>
-						<Link to='#' classname='menu-bars'>
-							<Close />
-						</Link>
+						
+						<Close onClick={showSidebar}/>
+						
 					</li>
-					{
-						SidebarData.map((val, key) => {
-							return (
-									<li key={key} className={val.cName}>
-										<Link to='#'>
-											{val.icon}
-											<span>{val.title}</span>
-										</Link>
-									</li>
-							)
-						})
-					}
+					{SidebarData.map((val, key) => {
+						return (
+							<li key={key} className={val.cName}>
+								<Link to={val.path}>
+									{val.icon}
+									<span>{val.title}</span>
+								</Link>
+							</li>
+						)
+					})}
 				</ul>
 			</nav>
 		</>

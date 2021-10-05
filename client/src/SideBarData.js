@@ -1,36 +1,25 @@
 import React from "react";
-import HomeIcon from '@material-ui/icons/Home';
+//import HomeIcon from '@material-ui/icons/Home';
+import * as AiIcons from 'react-icons/ai';
 
 
 export const SidebarData = [
 	{
-		title: "Home",
-		icon: <HomeIcon />,
-		link: '/home',
+		title: 'Home',
+		icon: <AiIcons.AiFillHome />,
+		path: '/',
 		cName: 'sidebar-text'
 	},
 	{
-		title: "Home",
-		icon: <HomeIcon />,
-		link: '/home',
+		title: 'Reports',
+		icon: <AiIcons.AiFillHome />,
+		path: '/',
 		cName: 'sidebar-text'
 	},
 	{
-		title: "Home",
-		icon: <HomeIcon />,
-		link: '/home',
-		cName: 'sidebar-text'
-	},
-	{
-		title: "Home",
-		icon: <HomeIcon />,
-		link: '/home',
-		cName: 'sidebar-text'
-	},
-	{
-		title: "Home",
-		icon: <HomeIcon />,
-		link: '/home',
+		title: 'Products',
+		icon: <AiIcons.AiFillHome />,
+		path: '/',
 		cName: 'sidebar-text'
 	}
 ]
