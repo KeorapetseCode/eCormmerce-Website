@@ -4,7 +4,7 @@ import "./styles/App.css";
 import Header from './Header.js';
 import Home from './Home.js';
 import Checkout from './Checkout';
-import Navigation from "./SideBar";
+import Sidebar from "./Sidebar";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -15,7 +15,7 @@ function App() {
 		<Router>
 			<div className="app">
 				<Header />{/*The Header is rendered regardless of any page we are on*/}
-				<Navigation /> 
+				<Sidebar /> 
 				<Switch>
 					<Route path="/checkout">
 						<Checkout />

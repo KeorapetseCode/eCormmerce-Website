@@ -1,30 +1,57 @@
-import React, { useState, useCallback } from "react";
-import "./styles/SideBar.css";
+import React, { useState } from "react";
+import "./styles/Sidebar.css";
 import MenuIcon from '@material-ui/icons/Menu';
 import Close from '@material-ui/icons/Close';
-import { SideBarData} from './SideBarData'
+import { SidebarData } from './SidebarData'
+import { Link } from 'react-router-dom';
 
-function SideBar() {
+function Sidebar() {
 
-	const [sidebar, setSideBar] = useState(false);
+	const [sidebar, setSidebar] = useState(false);
 
-	const showSideBar = () => {
-		if (sidebar === false)
-				setSideBar(true);
-			else if (sidebar === true)
-				setSideBar(false);
-	};
+	const showSidebar = () => setSidebar(!sidebar);
 
 	return (
-		<div className="sidebar">
-			<ul>
-				{SideBarData.map((val, key) => {
-					return <li key={key}> {val.icon}</li>
-				})
-				}
-			</ul>
-		</div>
+		<>
+			<div className="navbar">
+				<Link to='#' className='menu-bars'>
+					<MenuIcon onclick={showSidebar} />
+				</Link>
+			</div>
+
+			<nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+				<ul className='nav-menu-items'>
+					<li className='navbar-toggle'>
+						<Link to='#' classname='menu-bars'>
+							<Close />
+						</Link>
+					</li>
+					{
+						SidebarData.map((val, key) => {
+							return (
+									<li key={key} className={val.cName}>
+										<Link to='#'>
+											{val.icon}
+											<span>{val.title}</span>
+										</Link>
+									</li>
+							)
+						})
+					}
+				</ul>
+			</nav>
+		</>
 	)
 }
 
-export default SideBar;
+export default Sidebar;
+
+/*
+			<ul>
+				{
+					SideBarData.map((val, key) => {
+						return <li key={key}> {val.icon} {val.title}</li>
+					})
+				}
+			</ul>
+			*/
