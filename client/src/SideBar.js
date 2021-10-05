@@ -17,19 +17,14 @@ function Sidebar() {
 	}
 
 	return (
-		<>
-			<div className="navbar">
-				<MenuIcon onClick={showSidebar}/>
+		<>			
+			<div className='navbar-toggle'>
+				{sidebar ? <Close onClick={showSidebar}/> : <MenuIcon onClick={showSidebar}/>}
 			</div>
 
-			<nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+			<nav className={sidebar ? 'side-menu active' : 'side-menu'}>
 
-				<ul className='nav-menu-items' onclick={showSidebar}>
-					<li className='navbar-toggle'>
-						
-						<Close onClick={showSidebar}/>
-						
-					</li>
+				<ul className='side-menu-items' onclick={showSidebar}>
 					{SidebarData.map((val, key) => {
 						return (
 							<li key={key} className={val.cName}>
