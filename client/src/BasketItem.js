@@ -1,9 +1,9 @@
 import "./styles/BasketItem.css";
-import { useStateValue } from './StateProvider';
+import { useBasketValue } from './StateProvider';
 
 
 function BasketItem({price, name, image, uid}) {
-	const [{ basket }, dispatch] = useStateValue();
+	const [{ basket }, dispatch] = useBasketValue();
 
 	const removeFromBasket = () => {
 		dispatch({

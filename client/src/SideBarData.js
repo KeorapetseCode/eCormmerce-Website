@@ -1,7 +1,6 @@
-import React from "react";
+//import { useState, useEffect } from 'react';
 //import HomeIcon from '@material-ui/icons/Home';
 import * as AiIcons from 'react-icons/ai';
-
 
 export const SidebarData = [
 	{

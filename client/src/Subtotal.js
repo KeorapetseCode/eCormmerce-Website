@@ -3,11 +3,11 @@ import "./styles/Subtotal.css";
 import CurrencyFormat from "react-currency-format"; 
 //import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
 //import { Checkbox } from "@material-ui/core";
-import { useStateValue } from './StateProvider';
+import { useBasketValue } from './StateProvider';
 import { getBasketTotal } from "./reducer";
 
 function Subtotal(){
-	const [{ basket }, dispatch] = useStateValue();
+	const [{ basket }, dispatch] = useBasketValue();
 
 	return (
 		<div className="subtotal">

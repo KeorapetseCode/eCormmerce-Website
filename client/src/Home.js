@@ -1,11 +1,12 @@
 //import React from 'react';
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+//import { useContext} from 'react';
 import './styles/Home.css';
 //import MultProducts from './MultProducts';
 import Product from './Product.js';
 import { Grid } from '@material-ui/core';
-
+//import { FranchiseContext } from './FranchiseContext';
 
 
 function Home() {
@@ -13,18 +14,39 @@ function Home() {
 	var [itemNames, setItems] = useState([]);
 	var [loadNames, setNamesStatus] = useState(false);
 
+	var [franchiseNames, setFanchiseNames] = useState([]);
+	var [loadFranchise, setFranchiseStatus] = useState(false);
+
+	//const {franchiseList, setFranchiseList} = useContext(FranchiseContext);
 	useEffect(() => {
 		var fetchDirs = async () => {
 			const resp = await fetch("/api/getAllItems");
 			const items = await resp.json();
-			
+
 			setItems(items);
 			setNamesStatus(true);
-			//let ans = Array.isArray(dirs_names);
-			//console.log("is it arr " + ans);
+
+			const respFranchise = await fetch("/api/folderNames");
+			const franchiseData = await respFranchise.json();
+
+			setFanchiseNames(franchiseData);
+			setFranchiseStatus(true);
+
+			//console.log("FranName is: " + franchiseNames + "\n");
 		}
 		fetchDirs();
 	}, []);
+	
+	if (loadFranchise === true){
+		console.log("FranName is: " + franchiseNames + "\n");
+		/*
+		setFranchiseList({'name':'keoa'});
+		console.log("Franlist is: " + franchiseList + "\n");
+		//const temp = useContext(FranchiseContext);
+		*/
+	}
+	
+	
 	//Randomise number of contents on larger screens
 	/*var randomNum = () => {
 		return Math.floor(Math.random() * (4 - 8 + 1)) + 6;
@@ -47,7 +69,6 @@ function Home() {
 					</Grid>
 				  ))}
 				</Grid>
-				/*</div>*/
 			)
 			}
 		</div>

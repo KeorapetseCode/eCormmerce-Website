@@ -1,9 +1,9 @@
 import "./styles/Product.css";
-import { useStateValue } from './StateProvider';
+import { useBasketValue } from './StateProvider';
 
 
 function Product({price, image, name, uid}) {
-	const [state, dispatch] = useStateValue();
+	const [state, dispatch] = useBasketValue();
 
 	const addToBasket = () => {
 		//add item into the data layer

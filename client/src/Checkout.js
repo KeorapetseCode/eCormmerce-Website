@@ -3,16 +3,16 @@ import "./styles/Checkout.css";
 import Subtotal from "./Subtotal";
 import BasketItem from "./BasketItem";
 
-import { useStateValue } from "./StateProvider";
+import { useBasketValue } from "./StateProvider";
 //import { getBasketList } from "./reducer";
 
 function Checkout(){
-	const [{ basket }] = useStateValue();
+	const [{ basket }] = useBasketValue();
 
 	const getBasketItemsList = (basket) => {
 		let totalItems = basket?.length;
 		
-		if (totalItems > 0){	
+		if (totalItems > 0){
 			return(
 				<div className="checkout__">
 					{basket.map((oneItem) => (

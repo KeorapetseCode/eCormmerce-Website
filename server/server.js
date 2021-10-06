@@ -1,4 +1,4 @@
-	const { dir } = require('console');
+const { dir } = require('console');
 const express = require('express');
 const fs = require("fs");
 const path = require('path');
@@ -80,15 +80,17 @@ function getFolderNames(dir_path){
 */
 
 //Sending Folder Names
-/*
+
 app.get('/api/folderNames', (req, res) => {
 
 	let dir_pat = path.join(__dirname, 'items');
 	let dir_names = getFolderNames(dir_pat);
+	
 	//console.log("Dir path is " + dir_names);
+	res.setHeader('Content-Type', 'application/json');
 	res.json(dir_names);
 });
-*/
+
 /*Making an array of Objects and sending it to front-end as a
 single json object.
 */ 
@@ -116,6 +118,7 @@ app.get('/api/getAllItems', (req, res) => {
 			return console.error(error.message);
 		  }
 		  //console.log(rows);
+		 console.log("About to send all"); 
 		  res.setHeader('Content-Type', 'application/json');
 		  res.json(rows);
 	});

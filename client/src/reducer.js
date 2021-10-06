@@ -1,20 +1,13 @@
 //import React from "react";
-
-import BasketItem from "./BasketItem";
+//import BasketItem from "./BasketItem";
 
 //When we start the basket is empty, hence the word initial. This our global variable basket.
 export const initialState = {
 	basket: [],
 };
-
-//Calculating the subtotal amount and displaying it in subtotal.js
 /*
-reduce()[not reducer] is a vanila js function that does the given function execution
-to each array value.
+reducer is going to be a function that is allowing the manipulation of initialstate which is basket.
 */
-export const getBasketTotal = (basket) =>
-	basket?.reduce((amount, item) => item.price + amount, 0);
-
 const reducer = (state, action) => {
 	//console.log(action);
 	switch(action.type){
@@ -48,5 +41,13 @@ const reducer = (state, action) => {
 			return state;
 	}
 };
+
+//Calculating the subtotal amount and displaying it in subtotal.js
+export const getBasketTotal = (basket) =>
+	basket?.reduce((amount, item) => item.price + amount, 0);
+/*
+reduce()[not reducer] is a vanila js function that does the given function execution
+to each array value.
+*/
 
 export default reducer;
