@@ -1,12 +1,11 @@
 //import React from 'react';
 import React, { useState } from 'react';
-import { useEffect } from 'react';
-//import { useContext} from 'react';
+import { useEffect, useContext } from 'react';
 import './styles/Home.css';
 //import MultProducts from './MultProducts';
 import Product from './Product.js';
 import { Grid } from '@material-ui/core';
-//import { FranchiseContext } from './FranchiseContext';
+import { FranchiseContext } from './FranchiseContext';
 
 
 function Home() {
@@ -17,7 +16,7 @@ function Home() {
 	var [franchiseNames, setFanchiseNames] = useState([]);
 	var [loadFranchise, setFranchiseStatus] = useState(false);
 
-	//const {franchiseList, setFranchiseList} = useContext(FranchiseContext);
+	const [franchiseList, setFranchiseList] = useContext(FranchiseContext);
 	useEffect(() => {
 		var fetchDirs = async () => {
 			const resp = await fetch("/api/getAllItems");
@@ -38,12 +37,11 @@ function Home() {
 	}, []);
 	
 	if (loadFranchise === true){
-		console.log("FranName is: " + franchiseNames + "\n");
-		/*
-		setFranchiseList({'name':'keoa'});
-		console.log("Franlist is: " + franchiseList + "\n");
-		//const temp = useContext(FranchiseContext);
-		*/
+		//console.log("FranName is: " + franchiseNames + "\n");
+
+		setFranchiseList(franchiseNames);
+		//console.log("Franlist is: " + franchiseList + "\n");
+		
 	}
 	
 	

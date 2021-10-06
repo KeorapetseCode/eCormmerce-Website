@@ -11,13 +11,13 @@ import { FranchiseContext } from "./FranchiseContext.js";
 
 
 function App() {
-	const [franchiseList, setFranchiseList] = useState(null);
+	const [franchiseList, setFranchiseList] = useState([]);
 
 	return(
 		<Router>
 			<div className="app">
 				<Header />{/*The Header is rendered regardless of any page we are on*/}
-				<FranchiseContext.Provider value={franchiseList, setFranchiseList}>
+				<FranchiseContext.Provider value={[franchiseList, setFranchiseList]}>
 					<Sidebar />
 				</FranchiseContext.Provider>
 				<Switch>
@@ -25,7 +25,7 @@ function App() {
 						<Checkout />
 					</Route>
 					<Route path="/">
-					<FranchiseContext.Provider value={franchiseList, setFranchiseList}>
+					<FranchiseContext.Provider value={[franchiseList, setFranchiseList]}>
 						<Home />
 					</FranchiseContext.Provider>
 					</Route>

@@ -12,7 +12,11 @@ import {FranchiseContext} from './FranchiseContext';
 function Sidebar() {
 
 	const [sidebar, setSidebar] = useState(false);
-	const rr = useContext(FranchiseContext);
+	const [franchiseList, setFranchiseList] = useContext(FranchiseContext);
+
+	//brand_lst.map((item))
+	//console.log("Var type is: " + typeof franchiseList)
+	//console.log("fddfdf " + franchiseList);
 
 	const showSidebar = () => {
 	//	flip sidebar to opposite value(if true, turn to false. If false turn to true)
@@ -24,16 +28,14 @@ function Sidebar() {
 			<div className='navbar-toggle'>
 				{sidebar ? <Close onClick={showSidebar}/> : <MenuIcon onClick={showSidebar}/>}
 			</div>
-			<div>{rr}</div>
 			<nav className={sidebar ? 'side-menu active' : 'side-menu'}>
 
 				<ul className='side-menu-items' onclick={showSidebar}>
-					{SidebarData.map((val, key) => {
+					{franchiseList.map((val) => {
 						return (
-							<li key={key} className={val.cName}>
-								<Link to={val.path}>
-									{val.icon}
-									<span>{val.title}</span>
+							<li key={val.name} className='sidebar-text'>
+								<Link to='#'>
+									<span>{val.name}</span>
 								</Link>
 							</li>
 						)

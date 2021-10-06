@@ -52,28 +52,30 @@ function checkFolderIfEmpty(dir_path){
 	return dirs;
 }
 
-function getFolderNames(dir_path){
+function getFolderNames(img_path){
 //	let dir_path = "./items";
 	let dirs = [];
 	let ret = [];
 	let check;
 
-	if (checkFolderExist(dir_path) === true){
-		dirs = checkFolderIfEmpty(dir_path);
+	if (checkFolderExist(img_path) === true){
+		dirs = checkFolderIfEmpty(img_path);
 
 		for (let i = 0; i < dirs.length; i++){
-			check = fs.statSync(dir_path + "/" + dirs[i]);
+			check = fs.statSync(img_path + "/" + dirs[i]);
 			if(check.isDirectory() === true){
-				ret.push(dirs[i]);
+				let obj = {'name':dirs[i]}; 
+				ret.push(obj);
 			}
 		}
 	}
-	else if (checkFolderIfEmpty(dir_path) === false)
-		dirs = "Item folder found";
-	//console.log("Import Image " + ret);
+	else if (checkFolderIfEmpty(img_path) === false)
+		console.log("Item folder found");
+	//console.log("ret is: " + ret);
 	return ret;
 }
 
+//console.log(getFolderNames(dir_pat));
 
 /* This function returns a json file, associating every folder with its
 	images.
@@ -85,9 +87,11 @@ app.get('/api/folderNames', (req, res) => {
 
 	let dir_pat = path.join(__dirname, 'items');
 	let dir_names = getFolderNames(dir_pat);
-	
-	//console.log("Dir path is " + dir_names);
+
 	res.setHeader('Content-Type', 'application/json');
+	//console.log("Var type is: " + typeof dir_names);
+	+
+	//console.log("Dir path is " + dir_names);
 	res.json(dir_names);
 });
 
@@ -118,9 +122,9 @@ app.get('/api/getAllItems', (req, res) => {
 			return console.error(error.message);
 		  }
 		  //console.log(rows);
-		 console.log("About to send all"); 
+		// console.log("About to send all"); 
 		  res.setHeader('Content-Type', 'application/json');
-		  res.json(rows);
+	 	  res.json(rows);
 	});
 });
 
