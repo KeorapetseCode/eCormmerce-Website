@@ -14,7 +14,7 @@ function Home() {
 	var [itemNames, setItems] = useState([]);
 	var [loadNames, setNamesStatus] = useState(false);
 
-	const [fran] = useContext(FranchiseFilter);
+	const [filtVal] = useContext(FranchiseFilter);
 
 	useEffect(() => {
 		var fetchAllItems = async () => {
@@ -26,8 +26,21 @@ function Home() {
 		}
 		fetchAllItems();
 	}, []);
-	//console.log("Brand Filter is: " + fran);
+	//console.log("Brand Filter is: " + filtVal);
+//	Trying to get an array with franchiseNames and without any name duplicating
+	if (loadNames === true){
+		let temp = [];
 	
+		itemNames.forEach(element => {
+				temp.push(element.FranchiseName);
+		});
+
+		let noDuplicates = temp.filter((c, index) => {
+			return temp.indexOf(c) === index;
+		});
+		console.log("Duplicates are " + noDuplicates);
+	}
+
 	return(
 		<div className='home'>
 			{!loadNames ? <div className='loading__icon'>loading...!</div>
@@ -36,7 +49,7 @@ function Home() {
 				{itemNames.map((single_item) => (
 
 					<Grid item key={single_item.ItemName} xs={12} sm={6} md={4} lg={4}>
-					{/*console.log(single_item)*/}
+					{/*console.log(single_item.BrandName)*/}
 					<Product
 						price={single_item.Price}
 						name={single_item.ItemName}

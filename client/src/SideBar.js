@@ -28,7 +28,7 @@ function Sidebar() {
 
 	const showSidebar = () => setSidebar(!sidebar);
 
-	console.log("Filter Value: " + filterValue);
+	//console.log("Filter Value: " + filterValue);
 
 	return (
 		<>			
