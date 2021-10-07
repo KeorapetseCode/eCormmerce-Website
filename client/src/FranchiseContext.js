@@ -1,3 +1,5 @@
 import { createContext } from "react";
 
-export const FranchiseContext = createContext(null);
+export const FranchiseFilter = createContext(null);
+
+//const [franchiseList, setFranchiseList] = useState([]);

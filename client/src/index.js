@@ -1,18 +1,19 @@
 import React from 'react';
+//import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import reducer, { initialState } from './reducer';
-import { StateProvider } from './StateProvider';
+import { BasketStateProvider } from './BasketStateProvider';
 
 
 ReactDOM.render(
   <React.StrictMode>
-	<StateProvider initialState={initialState} reducer={reducer}>
+	<BasketStateProvider initialState={initialState} reducer={reducer}>
     	<App />
-	</StateProvider>
+	</BasketStateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

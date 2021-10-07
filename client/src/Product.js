@@ -1,6 +1,5 @@
 import "./styles/Product.css";
-import { useBasketValue } from './StateProvider';
-
+import { useBasketValue } from './BasketStateProvider';
 
 function Product({price, image, name, uid}) {
 	const [state, dispatch] = useBasketValue();

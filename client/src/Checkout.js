@@ -3,7 +3,7 @@ import "./styles/Checkout.css";
 import Subtotal from "./Subtotal";
 import BasketItem from "./BasketItem";
 
-import { useBasketValue } from "./StateProvider";
+import { useBasketValue } from "./BasketStateProvider";
 //import { getBasketList } from "./reducer";
 
 function Checkout(){

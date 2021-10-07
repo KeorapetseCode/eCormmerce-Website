@@ -1,5 +1,5 @@
 import "./styles/BasketItem.css";
-import { useBasketValue } from './StateProvider';
+import { useBasketValue } from './BasketStateProvider';
 
 
 function BasketItem({price, name, image, uid}) {

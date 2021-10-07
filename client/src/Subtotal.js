@@ -3,7 +3,7 @@ import "./styles/Subtotal.css";
 import CurrencyFormat from "react-currency-format"; 
 //import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
 //import { Checkbox } from "@material-ui/core";
-import { useBasketValue } from './StateProvider';
+import { useBasketValue } from './BasketStateProvider';
 import { getBasketTotal } from "./reducer";
 
 function Subtotal(){

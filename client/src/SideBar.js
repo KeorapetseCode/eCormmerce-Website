@@ -1,27 +1,34 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { useContext } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import Close from '@material-ui/icons/Close';
-import { SidebarData } from './SidebarData'
 import { Link } from 'react-router-dom';
+import HomeIcon from '@material-ui/icons/Home';
 import "./styles/Sidebar.css";
-//import * as FaIcons from 'react-icons/fa';
-//import * as AiIcons from 'react-icons/ai';
-import {FranchiseContext} from './FranchiseContext';
-
+import {FranchiseFilter} from './FranchiseContext.js';
 
 function Sidebar() {
 
 	const [sidebar, setSidebar] = useState(false);
-	const [franchiseList, setFranchiseList] = useContext(FranchiseContext);
+	const [franchiseNames, setFanchiseNames] = useState([]);
+	const [loadFranchise, setFranchiseStatus] = useState(false);
 
-	//brand_lst.map((item))
-	//console.log("Var type is: " + typeof franchiseList)
-	//console.log("fddfdf " + franchiseList);
+	const [filterValue, setFilterVal] = useContext(FranchiseFilter);
+	
+	useEffect(() =>{
+		const fetchBrandNames = async () => {
+			const respFranchise = await fetch("/api/folderNames");
+			const franchiseData = await respFranchise.json();
 
-	const showSidebar = () => {
-	//	flip sidebar to opposite value(if true, turn to false. If false turn to true)
-		setSidebar(!sidebar);
-	}
+			setFanchiseNames(franchiseData);
+			setFranchiseStatus(true);
+		}
+		fetchBrandNames();
+	}, []);
+
+	const showSidebar = () => setSidebar(!sidebar);
+
+	console.log("Filter Value: " + filterValue);
 
 	return (
 		<>			
@@ -30,16 +37,23 @@ function Sidebar() {
 			</div>
 			<nav className={sidebar ? 'side-menu active' : 'side-menu'}>
 
-				<ul className='side-menu-items' onclick={showSidebar}>
-					{franchiseList.map((val) => {
-						return (
-							<li key={val.name} className='sidebar-text'>
-								<Link to='#'>
-									<span>{val.name}</span>
-								</Link>
-							</li>
-						)
-					})}
+				<ul className='side-menu-items' onClick={showSidebar}>
+					<Link to="/" className='sidebar-text'>
+						<HomeIcon />
+						<span>Home</span>
+					</Link>
+					{!loadFranchise ? <div className='loading__icon'>loading...!</div>
+					:(
+						franchiseNames.map((brand) => {
+							return(
+								<li key={brand.name} className='sidebar-text'>
+									<a href='#' onClick={() => setFilterVal(brand.name)}>
+										<span>{brand.name}</span>
+									</a>
+								</li>
+							)
+						})
+					)}
 				</ul>
 			</nav>
 		</>

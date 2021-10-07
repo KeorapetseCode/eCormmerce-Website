@@ -1,6 +1,3 @@
-//import React from "react";
-//import BasketItem from "./BasketItem";
-
 //When we start the basket is empty, hence the word initial. This our global variable basket.
 export const initialState = {
 	basket: [],

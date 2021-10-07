@@ -5,7 +5,7 @@ export const BasketContext = createContext();
 //export const FranchiseContext = createContext();
 
 //Wrap app and provide dataLayer
-export const StateProvider = ({ reducer, initialState, children }) => (
+export const BasketStateProvider = ({ reducer, initialState, children }) => (
 	<BasketContext.Provider value={useReducer(reducer, initialState)}>
 		{children}
 	</BasketContext.Provider>
