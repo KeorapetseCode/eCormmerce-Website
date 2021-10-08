@@ -3,11 +3,11 @@ import "./styles/Checkout.css";
 import Subtotal from "./Subtotal";
 import BasketItem from "./BasketItem";
 
-import { useBasketValue } from "./BasketStateProvider";
+import { useStateValue } from "./StateProvider";
 //import { getBasketList } from "./reducer";
 
 function Checkout(){
-	const [{ basket }] = useBasketValue();
+	const [{ basket }] = useStateValue();
 
 	const getBasketItemsList = (basket) => {
 		let totalItems = basket?.length;

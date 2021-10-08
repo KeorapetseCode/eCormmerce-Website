@@ -5,8 +5,6 @@ import Close from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
 import "./styles/Sidebar.css";
-import {FranchiseFilter} from './FranchiseContext.js';
-
 
 function Sidebar() {
 
@@ -14,8 +12,6 @@ function Sidebar() {
 	const [franchiseNames, setFanchiseNames] = useState([]);
 	const [loadFranchise, setFranchiseStatus] = useState(false);
 
-	const [filterValue, setFilterVal] = useContext(FranchiseFilter);
-	
 	useEffect(() =>{
 		const fetchBrandNames = async () => {
 			const respFranchise = await fetch("/api/folderNames");
@@ -28,8 +24,6 @@ function Sidebar() {
 	}, []);
 
 	const showSidebar = () => setSidebar(!sidebar);
-
-	//console.log("Filter Value: " + filterValue);
 
 	return (
 		<>			
@@ -48,9 +42,9 @@ function Sidebar() {
 						franchiseNames.map((brand) => {
 							return(
 								<li key={brand.name} className='sidebar-text'>
-									<a href={'#'} onClick={() => setFilterVal(brand.name)}>
+									<button>
 										<span>{brand.name}</span>
-									</a>
+									</button>
 								</li>
 							)
 						})

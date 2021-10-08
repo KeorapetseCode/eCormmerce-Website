@@ -1,5 +1,11 @@
-import { createContext } from "react";
+import { createContext, useContext, useReducer } from "react";
+ 
+export const FranchiseContext = createContext();
 
-export const FranchiseFilter = createContext(null);
+export const FranchiseFilterStateProvider = ({ franfilterReducer, filterInitialState, children }) => (
+	<FranchiseContext.Provider value={useReducer(franfilterReducer, filterInitialState)}>
+		{children}
+	</FranchiseContext.Provider>
+);
 
-//const [franchiseList, setFranchiseList] = useState([]);
+export const useFilterValue = () => useContext(FranchiseContext);

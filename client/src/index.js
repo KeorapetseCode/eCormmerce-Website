@@ -5,15 +5,15 @@ import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import reducer, { initialState } from './reducer';
-import { BasketStateProvider } from './BasketStateProvider';
+import { StateProvider } from './StateProvider.js';
+import reducer, { initialState } from './reducer.js';
 
 
 ReactDOM.render(
   <React.StrictMode>
-	<BasketStateProvider initialState={initialState} reducer={reducer}>
-    	<App />
-	</BasketStateProvider>
+	<StateProvider initialState={initialState} reducer={reducer}>
+		<App />
+	</StateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
