@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useContext } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import Close from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
 import "./styles/Sidebar.css";
+import { useStateValue } from './StateProvider.js';
 
 function Sidebar() {
 
@@ -23,6 +23,25 @@ function Sidebar() {
 		fetchBrandNames();
 	}, []);
 
+	const [state, dispatch] = useStateValue();
+	
+	const defaultFilter = () => {
+		dispatch({
+			type: "FILTER",
+			filterValue: null
+		});
+		console.log("Default Called from Sidebar!!!");
+	}
+	
+	const brandFilter = (brand_title) => {
+		
+		dispatch({
+			type: "FILTER",
+			filterValue: brand_title
+		});
+		//console.log("Brand Filter is caught");
+	}
+
 	const showSidebar = () => setSidebar(!sidebar);
 
 	return (
@@ -33,7 +52,7 @@ function Sidebar() {
 			<nav className={sidebar ? 'side-menu active' : 'side-menu'}>
 
 				<ul className='side-menu-items' onClick={showSidebar}>
-					<Link to="/" className='sidebar-text'>
+					<Link to="/" onClick={defaultFilter} className='sidebar-text'>
 						<HomeIcon />
 						<span>Home</span>
 					</Link>
@@ -42,7 +61,7 @@ function Sidebar() {
 						franchiseNames.map((brand) => {
 							return(
 								<li key={brand.name} className='sidebar-text'>
-									<button>
+									<button onClick={() => brandFilter(brand.name)}>
 										<span>{brand.name}</span>
 									</button>
 								</li>

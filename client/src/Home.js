@@ -3,12 +3,13 @@ import './styles/Home.css';
 import Product from './Product.js';
 import { Grid } from '@material-ui/core';
 //import { Link } from 'react-router-dom';
-//import { useStateValue } from './StateProvider.js';
+import { useStateValue } from './StateProvider.js';
 
 function Home() {
 
 	const [productNames, setProduct] = useState([]);
 	const [loadNames, setNamesStatus] = useState(false);
+	const [{ view_filter }] = useStateValue();
 
 	useEffect(() => {
 		var fetchAllItems = async () => {
@@ -21,7 +22,32 @@ function Home() {
 		fetchAllItems();
 	}, []);
 
-
+	if (view_filter){
+		return(
+			<div className='home'>
+				{!loadNames ? <div className='loading__icon'>loading...!</div>
+				:(
+					<Grid container justifyContent='center' spacing={1}>
+					<div>View Filter is {view_filter}</div>
+					{productNames.map((item) => {
+						return (
+							<Grid item key={item.ItemName} xs={12} sm={6} md={4} lg={4} id={item.FranchiseName}>
+								<Product
+									name={item.ItemName}
+									price={item.Price}
+									image={item.Image}
+									uid={item.ItemUid}
+								/>
+							</Grid>
+						)						
+					}
+					)}
+				</Grid>)
+				}
+			</div>
+		)
+	}
+	else{
 		return(
 			<div className='home'>
 				{!loadNames ? <div className='loading__icon'>loading...!</div>
@@ -38,10 +64,10 @@ function Home() {
 							</Grid>
 						)
 					})}
-					</Grid>
-					)
+				</Grid>)
 				}
 			</div>
 		)
+	}
 }
 export default Home
