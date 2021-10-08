@@ -7,6 +7,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import "./styles/Sidebar.css";
 import {FranchiseFilter} from './FranchiseContext.js';
 
+
 function Sidebar() {
 
 	const [sidebar, setSidebar] = useState(false);
@@ -32,7 +33,7 @@ function Sidebar() {
 
 	return (
 		<>			
-			<div className='navbar-toggle'>
+			<div className='sidebar-toggle'>
 				{sidebar ? <Close onClick={showSidebar}/> : <MenuIcon onClick={showSidebar}/>}
 			</div>
 			<nav className={sidebar ? 'side-menu active' : 'side-menu'}>
@@ -47,7 +48,7 @@ function Sidebar() {
 						franchiseNames.map((brand) => {
 							return(
 								<li key={brand.name} className='sidebar-text'>
-									<a href='#' onClick={() => setFilterVal(brand.name)}>
+									<a href={'#'} onClick={() => setFilterVal(brand.name)}>
 										<span>{brand.name}</span>
 									</a>
 								</li>

@@ -12,10 +12,10 @@
   margin-bottom: -400px;
   mask-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgb(0, 0, 0, 0));
 }
-
+/*
 .home__row {
   display: flex;
   z-index: 1;
   margin-left: 5px;
   margin-right: 5px;
-}
+}*/
