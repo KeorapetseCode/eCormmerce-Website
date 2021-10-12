@@ -1,10 +1,21 @@
 import "./styles/Product.css";
 import { useStateValue } from './StateProvider.js';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+//import {} 
+import React, { useState } from 'react';
 
 
 function Product({price, image, name, uid}) {
 	const [state, dispatch] = useStateValue();
+
+	const [viewFullScreenImg, setviewFullScreenImg] = useState(null);
+	const [loadFullScreenView, fullScreenViewStatus] = useState(false);
+
+	const getFullScreenView = (imgToView) => {
+
+		setviewFullScreenImg(imgToView);
+		fullScreenViewStatus(true);
+	}
 
 	const addToBasket = () => {
 		//add item into the data layer
@@ -19,6 +30,8 @@ function Product({price, image, name, uid}) {
 			}
 		});
 	};
+
+	
 	return (
 		<div className='product'>
 			<div className='product__info'>
@@ -33,7 +46,7 @@ function Product({price, image, name, uid}) {
 				<TransformComponent>
 					<img className='product__image'
 						src={image}
-						alt={'item display here'}
+						alt={'product display here'}
 					/>
 				</TransformComponent>
 			</TransformWrapper>
