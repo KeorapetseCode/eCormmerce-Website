@@ -5,12 +5,56 @@
   margin-right: auto;
   max-width: 1100px;
   background-color: darkslategrey;
+  transition: 1000ms;
 }
+
 .home__image {
   width: 100%;
   z-index: -1;
   margin-bottom: -400px;
   mask-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgb(0, 0, 0, 0));
+}
+
+.fullView {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  background-color: darkslategrey;
+  transition: 1850ms;
+}
+
+.fullView.open {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+  background-color: red;
+  color: darkcyan;
+  transition: 850ms;
+}
+
+.fullView img {
+  width: auto;
+  max-width: 80%;
+  height: auto;
+  max-height: 80%;
+  display: block;
+  line-height: 0;
+  box-sizing: border-box;
+  padding: 20px 0 20px;
+  margin: 0 auto;
+}
+
+.fullView.open svg {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 2rem;
+  height: 2rem;
+  padding: 5px;
+  color: aqua;
+  cursor: pointer;
 }
 /*
 .home__row {

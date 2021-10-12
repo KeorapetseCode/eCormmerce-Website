@@ -1,13 +1,13 @@
 import "./styles/Product.css";
 import { useStateValue } from './StateProvider.js';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
-//import {} 
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+//import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+//import {}
 
-
-function Product({price, image, name, uid}) {
+function Product(props) {
 	const [state, dispatch] = useStateValue();
-
+/*
 	const [viewFullScreenImg, setviewFullScreenImg] = useState(null);
 	const [loadFullScreenView, fullScreenViewStatus] = useState(false);
 
@@ -16,43 +16,41 @@ function Product({price, image, name, uid}) {
 		setviewFullScreenImg(imgToView);
 		fullScreenViewStatus(true);
 	}
-
+*/
 	const addToBasket = () => {
 		//add item into the data layer
 		//dispatch calls reducer.
 		dispatch({
 			type: "ADD_TO_BASKET",
 			item: {
-				price: price,
-				image: image,
-				name: name,
-				uid: uid
+				price: props.price,
+				image: props.image,
+				name: props.name,
+				uid: props.uid
 			}
 		});
 	};
 
 	
 	return (
+		<>
 		<div className='product'>
 			<div className='product__info'>
-				<p>{name}</p>
+				<p>{props.name}</p>
 				<p className='product__price'>
 					<small>R</small>
-					<strong>{price}</strong>
+					<strong>{props.price}</strong>
 				</p>
 			</div>
-
-			<TransformWrapper defaultScale={1} defaultPositionX={100} defaultPositionY={200} >
-				<TransformComponent>
-					<img className='product__image'
-						src={image}
-						alt={'product display here'}
-					/>
-				</TransformComponent>
-			</TransformWrapper>
-		
+				<Link to='' onClick={() => props.fullView(props.image)}>
+				<img className='product__image' 
+					src={props.image}
+					alt={'product display here'}
+				/>
+				</Link>
 			<button onClick={addToBasket}>Add To Basket</button>
 		</div>
+		</>
 	)
 }
 
