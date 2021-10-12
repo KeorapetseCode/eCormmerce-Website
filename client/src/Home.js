@@ -15,7 +15,7 @@ function Home() {
 		var fetchAllItems = async () => {
 			const resp = await fetch("/api/getAllItems");
 			const items = await resp.json();
-
+			//console.log("Just Called API for all items!\n");
 			setProduct(items);
 			setNamesStatus(true);
 		}
@@ -23,13 +23,22 @@ function Home() {
 	}, []);
 
 	if (view_filter){
+		let filter_arr = [];
+		let len = productNames.length;
+
+		for (let v = 0; v < len; v++){
+			if (productNames[v].FranchiseName === view_filter){
+				filter_arr.push(productNames[v]);
+			}
+		}
+
 		return(
 			<div className='home'>
 				{!loadNames ? <div className='loading__icon'>loading...!</div>
 				:(
 					<Grid container justifyContent='center' spacing={1}>
-					<div>View Filter is {view_filter}</div>
-					{productNames.map((item) => {
+					<div>View Filte {view_filter}</div>
+					{filter_arr.map((item) => {
 						return (
 							<Grid item key={item.ItemName} xs={12} sm={6} md={4} lg={4} id={item.FranchiseName}>
 								<Product

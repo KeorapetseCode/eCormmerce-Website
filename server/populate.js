@@ -101,10 +101,11 @@ function populate(){
 			//pic = dir_names[a] + '/' + allItems[a][i];
 			item_uid = Math.random().toString(36).slice(2);
 			sngle_name = allItems[a][i].split('.')[0];
+			let saTimestamp = new Date().toLocaleString("en-US", "South Africa/Johannesburg");
 
 			sql = 
-					`INSERT INTO OnlineStolo.Items (ItemName, FranchiseName, Price, Image, ItemUid)`+
-					` VALUES ('`+ sngle_name +`','`+ dir_names[a] +`','`+ price +`','`+ pic +`','`+ item_uid +`')`;
+					`INSERT INTO OnlineStolo.Items (ItemName, FranchiseName, Price, Image, TimeofUpload, ItemUid)`+
+					` VALUES ('`+ sngle_name +`','`+ dir_names[a] +`','`+ price +`','`+ pic +`','`+ saTimestamp +`','`+ item_uid +`')`;
 
 					connection.query(sql, err => {
 						if (err){
