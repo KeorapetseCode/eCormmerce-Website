@@ -1,5 +1,7 @@
 import "./styles/Product.css";
 import { useStateValue } from './StateProvider.js';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+
 
 function Product({price, image, name, uid}) {
 	const [state, dispatch] = useStateValue();
@@ -26,10 +28,16 @@ function Product({price, image, name, uid}) {
 					<strong>{price}</strong>
 				</p>
 			</div>
-			<img
-				src={image}
-				alt={'item display here'}
-			/>
+
+			<TransformWrapper defaultScale={1} defaultPositionX={100} defaultPositionY={200} >
+				<TransformComponent>
+					<img className='product__image'
+						src={image}
+						alt={'item display here'}
+					/>
+				</TransformComponent>
+			</TransformWrapper>
+		
 			<button onClick={addToBasket}>Add To Basket</button>
 		</div>
 	)

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MenuIcon from '@material-ui/icons/Menu';
 import Close from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
+
 import HomeIcon from '@material-ui/icons/Home';
 import "./styles/Sidebar.css";
 import { useStateValue } from './StateProvider.js';
@@ -61,9 +62,9 @@ function Sidebar() {
 						franchiseNames.map((brand) => {
 							return(
 								<li key={brand.name} className='sidebar-text'>
-									<button onClick={() => brandFilter(brand.name)}>
+									<Link to='' onClick={() => brandFilter(brand.name)}>
 										<span>{brand.name}</span>
-									</button>
+									</Link>
 								</li>
 							)
 						})

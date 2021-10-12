@@ -2,10 +2,10 @@ import React from "react";
 import Header from './Header.js';
 import Home from './Home.js';
 import Checkout from './Checkout.js';
-import Sidebar from "./SideBar.js";
+import Sidebar from "./Sidebar.js";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./styles/App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
 	return(

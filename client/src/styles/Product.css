@@ -14,7 +14,7 @@
   z-index: 1;
 }
 
-.product > img {
+.product__image {
   max-height: 300px;
   width: 100%;
   object-fit: contain;
@@ -23,7 +23,6 @@
 
 .product_info {
   height: 100px;
-  margin-bottom: 10px;
 }
 
 .product > button {
