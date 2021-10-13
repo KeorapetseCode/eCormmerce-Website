@@ -51,7 +51,6 @@ function Sidebar() {
 				{sidebar ? <Close onClick={showSidebar}/> : <MenuIcon onClick={showSidebar}/>}
 			</div>
 			<nav className={sidebar ? 'side-menu active' : 'side-menu'}>
-
 				<ul className='side-menu-items' onClick={showSidebar}>
 					<Link to="/" onClick={defaultFilter} className='sidebar-text'>
 						<HomeIcon />

@@ -1,6 +1,7 @@
 .sidebar {
   display: flex;
 }
+
 .menu-bars {
   color: darkslategrey;
   margin-left: 2rem;

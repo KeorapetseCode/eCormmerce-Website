@@ -1,7 +1,8 @@
 import "./styles/Product.css";
 import { useStateValue } from './StateProvider.js';
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
+//import ii from "Rabbit Gang/Rabbit Gang Cover.jpg";
 //import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 //import {}
 
@@ -42,7 +43,7 @@ function Product(props) {
 					<strong>{props.price}</strong>
 				</p>
 			</div>
-				<Link to='' onClick={() => props.fullView(props.image)}>
+				<Link to='' onClick={() => props.fullViewFunc(props.image)}>
 				<img className='product__image' 
 					src={props.image}
 					alt={'product display here'}
