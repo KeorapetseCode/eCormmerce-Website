@@ -74,31 +74,30 @@ function Home(props) {
 	else{
 		return(
 			<>
-				<div className={loadFullScreenView ? 'fullView open' : 'fullView'}>
-				<Close onClick={() => removeFullView()}/>
-					<img src={viewFullScreenImg}></img>
-				</div>
-				<div className='home'>
-					{!loadNames ? <div className='loading__icon'>loading...!</div>
-					:(<Grid container justifyContent='center' spacing={1}>
-						{productNames.map((item) => {
-							return(
-								
-								<Grid item key={item.ItemName} xs={12} sm={6} md={4} lg={4} id={item.FranchiseName}>
-									<Product
-										name={item.ItemName}
-										price={item.Price}
-										image={item.Image}
-										uid={item.ItemUid}
-										fullView={getFullView}
-										
-									/>
-								</Grid>
-								
-							)
-						})}
-					</Grid>)
-					}
+				<div className={loadFullScreenView ? 'fullScreenOn' : 'fullScreenOff'}>
+					<Close className='closeIcon' onClick={() => removeFullView()}/>
+					<div className='fullViewImage'>
+						<img src={viewFullScreenImg}></img>
+					</div>
+					<div className='home' >
+						{!loadNames ? <div className='loading__icon'>loading...!</div>
+						:(<Grid container justifyContent='center' spacing={1}>
+							{productNames.map((item) => {
+								return(
+									<Grid item key={item.ItemName} xs={12} sm={6} md={4} lg={4} id={item.FranchiseName}>
+										<Product
+											name={item.ItemName}
+											price={item.Price}
+											image={item.Image}
+											uid={item.ItemUid}
+											fullView={getFullView}
+										/>
+									</Grid>				
+								)
+							})}
+						</Grid>)
+						}
+					</div>
 				</div>
 			</>
 		)
