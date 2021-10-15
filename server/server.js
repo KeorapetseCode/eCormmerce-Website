@@ -122,7 +122,7 @@ app.get('/api/getAllItems', (req, res) => {
 			return console.error(error.message);
 		  }
 		  //console.log(rows);
-			//console.log("About to send all"); 
+		//console.log("About to send all"); 
 		  res.setHeader('Content-Type', 'application/json');
 	 	  res.json(rows);
 	});

@@ -1,18 +1,19 @@
-//import React, { useState, useEffect } from 'react';
 import './styles/FullScreenView.css';
 import React from "react";
-import ii from "/tiktok.jpg";
+
+import Close from '@material-ui/icons/Close';
 
 function FullScreenView (props) {
 	
 	const closeFullView = () => {
-		//console.log("closing page for " + props.selectedImg);
+//		console.log("closing page for " + props.selectedImg);
 		props.setSelectedImg(null);
 	}
 	return (
-		<div className='fullScreenView' onClick={() => closeFullView()}>			
-			<img scr={ii} alt='full view goes here'></img>
+		<div className='fullScreenView' onClick={() => closeFullView()}>
+			<img src={props.selectedImg}></img>
 		</div>
+		
 	)
 }
 

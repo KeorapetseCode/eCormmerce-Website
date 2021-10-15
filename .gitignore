@@ -4,6 +4,7 @@
 /node_modules
 /server/node_modules
 /client/src/items
+/client/public
 /client/node_modules
 /client/new-react
 /.vscode

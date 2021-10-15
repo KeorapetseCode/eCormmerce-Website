@@ -11,13 +11,13 @@
 
 .side-menu {
   background-color: darkslategray;
-  width: 250px;
+  width: 50%;
   height: 100vh;
   display: flex;
   justify-content: center;
   position: fixed;
   top: 10;
-  left: -30%;
+  left: -100%;
   transition: 850ms;
 }
 
@@ -31,7 +31,7 @@
   align-items: center;
   padding: 8px 0px 8px 16px;
   list-style: none;
-  height: 60px;
+  height: 30px;
 }
 
 .sidebar-text a {
