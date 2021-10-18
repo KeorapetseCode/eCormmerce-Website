@@ -50,7 +50,6 @@ function Home( { setSelectedImg } ) {
 				{!loadNames ? <div className='loading__icon'>loading...!</div>
 				:(
 					<Grid container justifyContent='center' spacing={1}>
-					
 					{filter_arr.map((item) => {
 						return (
 							<Grid item key={item.ItemName} xs={12} sm={6} md={4} lg={4} id={item.FranchiseName}>
@@ -59,6 +58,7 @@ function Home( { setSelectedImg } ) {
 									price={item.Price}
 									image={item.Image}
 									uid={item.ItemUid}
+									fullViewFunc={getFullViewFunc}
 								/>
 							</Grid>
 						)						

@@ -4,6 +4,7 @@ import Home from "./Home.js";
 import Checkout from "./Checkout.js";
 import Sidebar from "./Sidebar.js";
 import FullScreenView from "./FullScreenView.js";
+import UploadForm from "./UploadForm.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
@@ -14,7 +15,7 @@ function App() {
 	const [selectedImg, setSelectedImg] = useState(null);
 
 	const setViewImg = (myImg) => {
-	//	console.log("from setView: " + myImg + "\n");
+	//`	console.log("from setView: " + myImg + "\n");
 		setSelectedImg(myImg);
 	}
 
@@ -26,6 +27,9 @@ function App() {
 				<Switch>
 					<Route path="/checkout">
 						<Checkout />
+					</Route>
+					<Route path='/upload'>
+						<UploadForm />
 					</Route>
 					<Route path="/">
 						<Sidebar />
