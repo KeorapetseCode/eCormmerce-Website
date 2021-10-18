@@ -2,12 +2,38 @@ const { dir } = require('console');
 const express = require('express');
 const fs = require("fs");
 const path = require('path');
+var bodyParser = require('body-parser');
 const connection = require('./config/database');
+
 
 const app = express();
 const dir_pat = path.join(__dirname, 'items');
 
 app.use(express.static(path.join(__dirname, 'items')));
+
+var jsonParser = bodyParser.json();
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+
+app.post('/api/getSupporting', jsonParser, (req, res) => {
+
+//	console.log("Req.Body" + req.body.image);
+	//console.log(req.body);
+	let sql = `SELECT SupportingImages FROM OnlineStolo.Items WHERE Image='` + req.body.image + `'`;
+
+	connection.query(sql, (error, rows) => {
+		if (error) {
+			return console.error(error.message);
+		  }
+		  console.log("About to send all\n");
+		  console.log(rows);
+	
+		  res.setHeader('Content-Type', 'application/json');
+	 	  res.json(rows);
+	});
+});
+
 
 
 app.get('/', (req, res) => {
@@ -81,6 +107,7 @@ function getFolderNames(img_path){
 	images.
 */
 
+
 //Sending Folder Names
 
 app.get('/api/folderNames', (req, res) => {
@@ -127,6 +154,8 @@ app.get('/api/getAllItems', (req, res) => {
 	 	  res.json(rows);
 	});
 });
+
+
 
 const port = 5001;
 
