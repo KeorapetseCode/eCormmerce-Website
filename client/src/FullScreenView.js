@@ -21,9 +21,10 @@ function FullScreenView (props) {
 			const resp = await fetch('/api/getSupporting', options);
 			const imgs = await resp.json();
 //			const temp = JSON.stringify(imgs);
+			console.log(typeof imgs);
 			setadditionalImgs(imgs);
 			setLoadImgs(true);
-			console.log("Supporting is " + imgs.SupportingImages + "\n");
+			//console.log("Supporting is " + imgs.SupportingImages + "\n");
 		}
 		fetchSupportingImgs(props.selectedImg);
 	}, [props.selectedImg]);
@@ -39,7 +40,8 @@ function FullScreenView (props) {
 			<img src={props.selectedImg} alt='fullViewItems'></img>
 			{!loadImgs ? <div className='loading__icon'>loading...!</div>
 			:(
-				<div>GOT Data{additionalImgs.SupportingImages}</div>
+				<div>GOT Data {console.log(additionalImgs[0].SupportingImages)}</div>
+
 			)}
 		</div>
 
