@@ -36,24 +36,36 @@ function FullScreenView (props) {
 	}, [props.selectedImg]);
 
 	const closeFullView = () => props.setSelectedImg(null);
-	const nextPic = () => {
-		console.log("next pic");
+	const nextPic = () => console.log("next pic");
 
-	}
-	const prevPic = () => {
-		console.log("prev pic");
-	}
+	const prevPic = () => console.log("prev pic");
+
 	/*additionalImgs[0]*/
-	/*<img src={props.selectedImg} alt='fullViewItems'></img>*/
+	/*<img src={props.selectedImg} alt='fullViewItems'></img>
+		<img src={props.selectedImg} className='slide__image' alt='fullViewItems'></img>
+	*/
+	function viewSelector(image){
 
+		return (
+			<img src={image} className='slide__image' alt='different item angle'></img>
+		)
+	}
+	/* if statement outside return to check if supporting images are available or not
+		If not display only the props.selected image.
+		if there are, images in additionalImgs then your return() will be different.(kind of like home.js)
+		**hint**
+		if additionalImgs is available then make sure to add props.selectedImg as an object to additionalImgs.
+		this will help because now additionalImgs will have all the images you need as one array/obj
+
+	 */
 	return (
 		<div className='slider' onClick={closeFullView}>
-			<img src={props.selectedImg} className='slide__image' alt='fullViewItems'></img>
 			<FaArrowAltCircleLeft className='left__arrow' onClick={() => prevPic} />
-
 			<FaArrowAltCircleRight className='right__arrow' onClick={() => nextPic} />
 			
-			{!loadAdditionalImgs ? <div>{console.log("loading....")}</div>
+			{!loadAdditionalImgs ? (
+			viewSelector(props.selectedImg)
+			)
 			:(
 				<div>{Object.values(additionalImgs).map(item => (
 					<div key={item}>
