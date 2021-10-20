@@ -27,8 +27,8 @@ function Home( { setSelectedImg } ) {
 	}, []);
 
 	const getFullViewFunc = (imgToView) => {
-		//console.log("getFULL Called!!!!" + imgToView);
 		setSelectedImg(imgToView);
+//		prepSlideShow(imgToView);
 	}
 	/*
 	const removeFullView = () => {
