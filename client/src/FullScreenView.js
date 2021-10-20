@@ -1,12 +1,17 @@
 import './styles/FullScreenView.css';
 import React, { useEffect, useState } from "react";
 
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+
 //import Close from '@material-ui/icons/Close';
 
 function FullScreenView (props) {
 	
 	const [additionalImgs, setadditionalImgs] = useState([]);
-	const [loadImgs, setLoadImgs] = useState(false);
+	const [loadAdditionalImgs, setLoadAdditionalImgs] = useState(false);
+//	const [length, setLength] = useState(0);
+
+//	const [slideIndex, setSlideIndex] = useState(-1);
 
 	useEffect(() => {
 // Had to make this request a POST because GET does not sent a request with body data
@@ -20,32 +25,46 @@ function FullScreenView (props) {
 
 			const resp = await fetch('/api/getSupporting', options);
 			const imgs = await resp.json();
-//			const temp = JSON.stringify(imgs);
-			console.log(typeof imgs);
-			setadditionalImgs(imgs);
-			setLoadImgs(true);
+			let temp = JSON.parse(imgs[0].SupportingImages);
+			//console.log(temp);
+			setadditionalImgs(temp);
+			setLoadAdditionalImgs(true);
+			
 			//console.log("Supporting is " + imgs.SupportingImages + "\n");
 		}
 		fetchSupportingImgs(props.selectedImg);
 	}, [props.selectedImg]);
 
-	const closeFullView = () => {
-//		console.log("closing page for " + props.selectedImg);
-		props.setSelectedImg(null);
-	}
+	const closeFullView = () => props.setSelectedImg(null);
 
 
-	return (
-		<div className='fullScreenView' onClick={() => closeFullView()}>
-			<img src={props.selectedImg} alt='fullViewItems'></img>
-			{!loadImgs ? <div className='loading__icon'>loading...!</div>
-			:(
-				<div>GOT Data {console.log(additionalImgs[0].SupportingImages)}</div>
-
-			)}
+	/*additionalImgs[0]*/
+	/*
+		<div className='back__arrow'>
+			<ArrowBackIcon />
+		</div>
+		<div className='forward__arrow'>
+			<ArrowForwardIcon />
 		</div>
 
+		<img src={props.selectedImg} alt='fullViewItems'></img>
+	*/
 
+	return (
+		<div className='slider' onClick={closeFullView}>
+			<img src={props.selectedImg} className='slide__image' alt='fullViewItems'></img>
+			<FaArrowAltCircleLeft className='left__arrow' />
+
+			<FaArrowAltCircleRight className='right__arrow' />
+			
+			{!loadAdditionalImgs ? <div>{console.log("loading....")}</div>
+			:(
+				<div>{Object.values(additionalImgs).map(item => (
+					<div>{item}</div>
+					))}
+				</div>
+			)}
+		</div>
 	)
 }
 

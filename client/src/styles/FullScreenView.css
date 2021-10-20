@@ -1,3 +1,4 @@
+/*
 .fullScreenView {
   position: fixed;
   top: 0;
@@ -8,6 +9,43 @@
 }
 
 .fullScreenView img {
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+  margin: 10px auto;
+  box-shadow: 3px 5px 7px rgb(0, 0, 0, 0.5);
+  border: 3px solid white;
+}
+
+.slide__ui {
+  top: 0;
+  left: 0;
+}
+
+.back__arrow {
+  width: 35px;
+  height: 30px;
+  background-color: olivedrab;
+  border-radius: 15px 10px 15px;
+}
+
+.forward__arrow {
+  width: 35px;
+  height: 25px;
+  background-color: olivedrab;
+  border-radius: 15px 10px 15px;
+}
+*/
+.slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0, 0.5);
+}
+
+.slide__image {
   display: block;
   max-width: 90%;
   max-height: 80%;

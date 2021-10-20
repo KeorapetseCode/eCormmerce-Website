@@ -26,8 +26,8 @@ app.post('/api/getSupporting', jsonParser, (req, res) => {
 		if (error) {
 			return console.error(error.message);
 		  }
-		  console.log("About to send all\n");
-		  console.log(rows);
+		  //console.log("About to send all\n");
+		  //console.log(rows);
 	
 		  res.setHeader('Content-Type', 'application/json');
 	 	  res.json(rows);
