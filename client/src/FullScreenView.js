@@ -36,31 +36,29 @@ function FullScreenView (props) {
 	}, [props.selectedImg]);
 
 	const closeFullView = () => props.setSelectedImg(null);
+	const nextPic = () => {
+		console.log("next pic");
 
-
+	}
+	const prevPic = () => {
+		console.log("prev pic");
+	}
 	/*additionalImgs[0]*/
-	/*
-		<div className='back__arrow'>
-			<ArrowBackIcon />
-		</div>
-		<div className='forward__arrow'>
-			<ArrowForwardIcon />
-		</div>
-
-		<img src={props.selectedImg} alt='fullViewItems'></img>
-	*/
+	/*<img src={props.selectedImg} alt='fullViewItems'></img>*/
 
 	return (
 		<div className='slider' onClick={closeFullView}>
 			<img src={props.selectedImg} className='slide__image' alt='fullViewItems'></img>
-			<FaArrowAltCircleLeft className='left__arrow' />
+			<FaArrowAltCircleLeft className='left__arrow' onClick={() => prevPic} />
 
-			<FaArrowAltCircleRight className='right__arrow' />
+			<FaArrowAltCircleRight className='right__arrow' onClick={() => nextPic} />
 			
 			{!loadAdditionalImgs ? <div>{console.log("loading....")}</div>
 			:(
 				<div>{Object.values(additionalImgs).map(item => (
-					<div key={item}>{item}</div>
+					<div key={item}>
+						<img src={item} className='slide__image' alt='viewer'></img>
+					</div>
 					))}
 				</div>
 			)}
