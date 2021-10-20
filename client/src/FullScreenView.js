@@ -60,7 +60,7 @@ function FullScreenView (props) {
 			{!loadAdditionalImgs ? <div>{console.log("loading....")}</div>
 			:(
 				<div>{Object.values(additionalImgs).map(item => (
-					<div>{item}</div>
+					<div key={item}>{item}</div>
 					))}
 				</div>
 			)}
