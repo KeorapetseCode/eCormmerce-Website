@@ -69,3 +69,11 @@
   font-size: 3rem;
   color: olivedrab;
 }
+
+.close__icon {
+  position: absolute;
+  top: 40%;
+  right: 32px;
+  font-size: 3rem;
+  color: olivedrab;
+}
