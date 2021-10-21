@@ -38,7 +38,7 @@
 */
 .slider {
   position: fixed;
-  top: 0;
+  top: 10%;
   left: 0;
   width: 100%;
   height: 100%;
@@ -47,8 +47,9 @@
 
 .slide__image {
   display: block;
-  max-width: 90%;
-  max-height: 80%;
+  top: 10%;
+  max-width: 50%;
+  max-height: 50%;
   margin: 10px auto;
   box-shadow: 3px 5px 7px rgb(0, 0, 0, 0.5);
   border: 3px solid white;
@@ -60,6 +61,8 @@
   right: 32px;
   font-size: 3rem;
   color: olivedrab;
+  z-index: 10;
+  cursor: pointer;
 }
 
 .left__arrow {
@@ -68,12 +71,28 @@
   left: 32px;
   font-size: 3rem;
   color: olivedrab;
+  z-index: 10;
+  cursor: pointer;
 }
 
 .close__icon {
   position: absolute;
-  top: 40%;
-  right: 32px;
-  font-size: 3rem;
-  color: olivedrab;
+  width: 300px;
+  height: 30px;
+  top: 20%;
+  right: 40px;
+  color: blanchedalmond;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.08);
 }
