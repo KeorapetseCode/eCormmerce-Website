@@ -3,6 +3,7 @@ import Header from "./Header.js";
 import Home from "./Home.js";
 import Checkout from "./Checkout.js";
 import Sidebar from "./Sidebar.js";
+import Login from "./Login.js";
 import FullScreenView from "./FullScreenView.js";
 import UploadForm from "./UploadForm.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -33,16 +34,20 @@ function App() {
 	return(
 		<Router>
 			<div className="app">
-				<Header />
-				
 				<Switch>
+					<Route path='/login'>
+						<Login />
+					</Route>
 					<Route path="/checkout">
+						<Header />
 						<Checkout />
 					</Route>
 					<Route path='/upload'>
+						<Header />
 						<UploadForm />
 					</Route>
 					<Route path="/">
+						<Header />
 						<Sidebar />
 						<Home setSelectedImg={setViewImg} />
 						{selectedImg && <FullScreenView selectedImg={selectedImg} setSelectedImg={setSelectedImg}/>}

@@ -27,11 +27,13 @@ function Header() {
 				/>
 			</Link>
 			<div className="header__nav">
-				<div className="header__option">
-					<span className="header__optionLineOne">Hello Guest</span>
-					<span className="header__optionLineTwo">Register Your Business With Us</span>
-					<span className='header__optionLineThree'>Upload</span>
-				</div>
+				<Link to='/login'>
+					<div className="header__option">
+						<span className="header__optionLineOne">Hello Guest</span>
+						<span className="header__optionLineTwo">Sign In</span>
+						<span className='header__optionLineThree'>Upload</span>
+					</div>
+				</Link>
 				<Link to="/checkout">
 					<div className="header__optionBasket">
 						<ShoppingBasketIcon />
