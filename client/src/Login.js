@@ -20,7 +20,7 @@ function Login() {
 			</Link>
 			<div className='login__container'>
 				<h1>Sign-in</h1>
-				<fomr>
+				<form>
 					<h5 className='login__tag'>E-mail</h5>
 					<input className='login__email' value={email} type='text' 
 					onChange={e => setEmail(e.target.value)}
@@ -32,7 +32,7 @@ function Login() {
 					/>
 
 					<button onClick={sign_in} type='submit' className='signin__btn'>Sign In</button>
-				</fomr>
+				</form>
 				<p>
 					By signing-in you agree to Stasha's Conditions
 					of Use & Sale. Please see our Privacy Notice,
