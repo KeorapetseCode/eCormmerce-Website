@@ -3,7 +3,9 @@ const express = require('express');
 const fs = require("fs");
 const path = require('path');
 var bodyParser = require('body-parser');
-const connection = require('./config/database');
+const connection = require('./database');
+//require("./config/.env");
+require ('custom-env').env('dev');
 
 
 const app = express();
@@ -156,7 +158,8 @@ app.get('/api/getAllItems', (req, res) => {
 });
 
 
-
-const port = 5001;
-
-app.listen(port);
+const PORT = process.env.NODE_DOCKER_PORT;
+app.listen(PORT, () => {
+	console.log(`My!! Server is running on port ${PORT}.`);
+  });
+//app.listen(port);

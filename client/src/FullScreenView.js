@@ -9,7 +9,7 @@ import { FaArrowAltCircleRight, FaArrowAltCircleLeft, FaTimes } from 'react-icon
 function FullScreenView ({ selectedImg, setSelectedImg }) {
 
 	const [additionalImgs, setadditionalImgs] = useState([]);
-	const [loadAdditionalImgs, setLoadAdditionalImgs] = useState(false);
+	const [loadAdditionalImgs, setLoadAdditionalImgs] = useState(false);//eslint-disable-line
 
 	const [current, setCurrent] = useState(0);
 

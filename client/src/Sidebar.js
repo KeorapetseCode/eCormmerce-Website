@@ -3,7 +3,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Close from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
 
-import HomeIcon from '@material-ui/icons/Home';
+//import HomeIcon from '@material-ui/icons/Home';
 import "./styles/Sidebar.css";
 import { useStateValue } from './StateProvider.js';
 
@@ -24,9 +24,9 @@ function Sidebar() {
 		fetchBrandNames();
 	}, []);
 
-	const [state, dispatch] = useStateValue();
+	const [state, dispatch] = useStateValue();//eslint-disable-line
 	
-	const defaultFilter = () => {
+	const defaultFilter = () => {//eslint-disable-line
 		dispatch({
 			type: "FILTER",
 			filterValue: null

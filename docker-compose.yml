@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  mysqldb:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+  server_side:
+    depends_on:
+      - mysqldb
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    environment:
+      - DB_HOST=$MYSQLDB_HOST=localhost
+      - DB_USER=$MYSQLDB_USER
+      - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - DB_NAME=$MYSQLDB_DATABASE
+      - DB_PORT=$MYSQLDB_DOCKER_PORT
+    #stdin_open: true
+    #tty: true
+  #client_side:
+  #  depends_on:
+  #    - server_side
+  #  build:
+  #    context: ./client
+  #    dockerfile: Dockerfile
+  #  restart: unless-stopped
+  #  ports:
+  #    - 3000:3000

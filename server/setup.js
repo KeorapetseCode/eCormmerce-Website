@@ -1,9 +1,12 @@
 const mysql = require('mysql');
 
+require ('custom-env').env('dev');
+
 const connection = mysql.createConnection({
-    host		: 'localhost',
-    user		: 'root',
-    password	: 'password'
+    host		: process.env.MYSQLDB_HOST,
+    user		: process.env.MYSQLDB_USER,
+    password	: process.env.MYSQLDB_ROOT_PASSWORD,
+	port 		: process.env.MYSQLDB_LOCAL_PORT
 });
 /*
 THESE COMMANDS(queries) ARE TO RESET THE MYSQL AUTHENTICATION CREDINTIALS(they should be ran on an sql client command line)

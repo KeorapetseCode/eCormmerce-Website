@@ -14,7 +14,7 @@ import "./styles/App.css";
 function App() {
 
 	const [selectedImg, setSelectedImg] = useState(null);
-	const [slides, prepSlideShow] = useState(null);
+	const [slides, prepSlideShow] = useState(null);//eslint-disable-line
 
 	const setViewImg = (myImg) => {
 		setSelectedImg(myImg);

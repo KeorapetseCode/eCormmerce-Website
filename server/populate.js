@@ -1,8 +1,8 @@
-const connection = require('./config/database');
+const connection = require('./database');
 const fs = require('fs');
 const path = require('path');
 //const faker = require('faker');
-const multer = require('multer');
+//const multer = require('multer');
 const express = require('express');
 const bodyParser = require("body-parser");
 

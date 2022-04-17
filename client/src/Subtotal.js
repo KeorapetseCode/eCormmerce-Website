@@ -7,7 +7,7 @@ import { useStateValue } from './StateProvider.js';
 import { getBasketTotal } from "./reducer";
 
 function Subtotal(){
-	const [{ basket }, dispatch] = useStateValue();
+	const [{ basket }, dispatch] = useStateValue();//eslint-disable-line
 
 	return (
 		<div className="subtotal">
