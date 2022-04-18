@@ -5,7 +5,6 @@ services:
   #     context: ./server
   #   image: keorapetsecode/my-node-image
   #   restart: unless-stopped
-  #   env_file: ./server/..env_file
   #   depends_on:
   #     - mysqldb
   #   environment:
@@ -22,6 +21,8 @@ services:
       - MYSQL_DATABASE=$MYSQLDB_DATABASE
     ports:
       - $MYSQLDB_DOCKER_PORT:$MYSQLDB_LOCAL_PORT
+    volumes:
+      - './server:/code'
     container_name: stolo_db
     #stdin_open: true
     #tty: true
