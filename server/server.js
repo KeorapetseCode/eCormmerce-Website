@@ -39,7 +39,7 @@ app.post('/api/getSupporting', jsonParser, (req, res) => {
 
 
 app.get('/', (req, res) => {
-	res.send("Your on index");
+	res.send("Your on server.js page");
 });
 const resHandler = (err, dbName) => {
     if (err)
