@@ -1,0 +1,17 @@
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD=12345
+
+ENV MYSQL_DATABASE=onlinestolo
+
+ENV MYSQLDB_DOCKER_PORT=3306
+
+#WORKDIR /code
+
+VOLUME /server:/code
+
+COPY ./start.sh /.
+
+#RUN  && apt install/upgrade mysql-server && apt upgrade mysql-client;
+# ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'password'
+EXPOSE 3304:3306
