@@ -1,7 +1,14 @@
+This is an eCormmerce application built with React, NodeJS and MySQL.
+
+Requirements
+-.Download Node, React and MySQL
+-.
+-.
+__________________________________________________________________________________________________________________
 When running with docker compose
 docker-compose --env-file ./server/.env.dev up
 
-Commands for setting up Msql container and database 
+Commands for setting up Msql container and database
 
 #apt-get update
 #apt install npm -y
@@ -13,4 +20,4 @@ Commands for setting up Msql container and database
 #//replace password with your DB server password
 #(if it does not work try) ALTER USER 'localhost'@'root' IDENTIFIED WITH mysql_native_password BY 'password';
 #FLUSH PRIVILEGES;
-#node setup.js && node populate.js 
+#node setup.js && node populate.js
