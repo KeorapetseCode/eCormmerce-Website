@@ -10,13 +10,13 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  run:
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: 16.17.1
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
