@@ -1,3 +1,4 @@
+/*
 .fullScreenView {
   position: fixed;
   top: 0;
@@ -14,4 +15,84 @@
   margin: 10px auto;
   box-shadow: 3px 5px 7px rgb(0, 0, 0, 0.5);
   border: 3px solid white;
+}
+
+.slide__ui {
+  top: 0;
+  left: 0;
+}
+
+.back__arrow {
+  width: 35px;
+  height: 30px;
+  background-color: olivedrab;
+  border-radius: 15px 10px 15px;
+}
+
+.forward__arrow {
+  width: 35px;
+  height: 25px;
+  background-color: olivedrab;
+  border-radius: 15px 10px 15px;
+}
+*/
+.slider {
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0, 0.5);
+}
+
+.slide__image {
+  display: block;
+  top: 10%;
+  max-width: 50%;
+  max-height: 50%;
+  margin: 10px auto;
+  box-shadow: 3px 5px 7px rgb(0, 0, 0, 0.5);
+  border: 3px solid white;
+}
+
+.right__arrow {
+  position: absolute;
+  top: 50%;
+  right: 32px;
+  font-size: 3rem;
+  color: olivedrab;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.left__arrow {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  font-size: 3rem;
+  color: olivedrab;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.close__icon {
+  position: absolute;
+  width: 300px;
+  height: 30px;
+  top: 20%;
+  right: 40px;
+  color: blanchedalmond;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.08);
 }
