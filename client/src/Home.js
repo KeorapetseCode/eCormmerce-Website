@@ -19,6 +19,7 @@ function Home( { setSelectedImg } ) {
 			const resp = await fetch("/api/getAllItems");
 			const items = await resp.json();
 			//console.log("Just Called API for all items!\n");
+			//console.log(typeof items);
 			setProduct(items);
 			setNamesStatus(true);
 		}
@@ -26,8 +27,8 @@ function Home( { setSelectedImg } ) {
 	}, []);
 
 	const getFullViewFunc = (imgToView) => {
-		//console.log("getFULL Called!!!!" + imgToView);
 		setSelectedImg(imgToView);
+//		prepSlideShow(imgToView);
 	}
 	/*
 	const removeFullView = () => {

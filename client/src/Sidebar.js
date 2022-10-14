@@ -46,16 +46,16 @@ function Sidebar() {
 	const showSidebar = () => setSidebar(!sidebar);
 
 	return (
-		<>			
+		<>
 			<div className='sidebar-toggle'>
 				{sidebar ? <Close onClick={showSidebar}/> : <MenuIcon onClick={showSidebar}/>}
 			</div>
 			<nav className={sidebar ? 'side-menu active' : 'side-menu'}>
 				<ul className='side-menu-items' onClick={showSidebar}>
-					<Link to="/" onClick={defaultFilter} className='sidebar-text'>
-						<HomeIcon />
-						<span>Home</span>
-					</Link>
+					{/*<Link to="/" onClick={defaultFilter} className='sidebar-text'>
+						<HomeIcon className='home__icon' />
+						<span className='home__icon_text'>Home</span>
+					</Link>*/}
 					{!loadFranchise ? <div className='loading__icon'>loading...!</div>
 					:(
 						franchiseNames.map((brand) => {

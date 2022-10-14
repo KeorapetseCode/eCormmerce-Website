@@ -15,25 +15,30 @@ const resHandler = (err, dbName) => {
 
 const add_surpoting_imgs = () => {
 
-	//
 	let newPath = path.join(dir_pat, './New Folder');
-	console.log("Path is " + newPath + "\n");
+	//console.log("Path is " + newPath + "\n");
 	
 	let temp = fs.readdirSync(newPath);
-	let imgJson = [];
-
-	temp.map((img) => {
-		imgJson.push("/NewFolder" + '/' + img);
+	let imgJson = {};
+	
+	temp.map((img, index) => {
+		imgJson[index] = 'New folder' + '/' + img;
+		//imgJson.push(index.toString() + ' : ' + '/New folder' + '/' + img);
 	});
-	console.log("Image.JSON is " + imgJson + "\n");
+
+	//let key = "Name";
+	//imgJson[key] = "Keorapetse";
+
+	//console.log(imgJson);
 
 	let myJson = JSON.stringify(imgJson);
 
-	for (let v = 0; v < 23; v++ ){
+	//console.log(myJson);
 
+	for (let v = 0; v < 23; v++ ){
 		sql = 
 				`UPDATE OnlineStolo.Items SET SupportingImages = '`+ myJson +`'`;
-		
+
 		connection.query(sql, err => {
 			if (err){
 				console.log("Error While Trying to insert!@#\n");
